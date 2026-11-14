@@ -182,3 +182,81 @@ def test_rotation_actuelle_invalide():
 
 def test_sans_rotation_actuelle():
     assert client.post(f"{API}/rotations", json={}).json()["actuelle"] is None
+    
+
+
+
+# --------------------------------------------------------------------------
+# Assistant : le modele est remplace par une fausse reponse (pas d'appel reseau)
+# --------------------------------------------------------------------------
+import app.modules.assistant.service as assistant  # noqa: E402
+
+
+def faux_modele(reponses):
+    appels = []
+
+    def appeler(systeme, messages):
+        appels.append((systeme, messages))
+        return reponses[min(len(appels) - 1, len(reponses) - 1)]
+
+    return appeler, appels
+
+
+def test_assistant_recoit_les_faits(monkeypatch):
+    appeler, appels = faux_modele(["L'option 1 alterne céréale et légumineuse, comme le conseille l'IRAD."])
+    monkeypatch.setattr(assistant, "appeler_modele", appeler)
+    r = client.post(f"{API}/assistant", json={
+        "question": "Pourquoi l'option 1 ?",
+        "contexte": {"actuelle": ["mais", "haricot", "mais", "haricot"]},
+    })
+    assert r.status_code == 200 and r.json()["verifiee"] is True
+    systeme = appels[0][0]
+    assert "Option 1" in systeme and "Rotation habituelle" in systeme
+    assert "corrélation mensuelle 0.79" in systeme
+    assert "tableau à recopier" not in systeme  # exemple IRAD pas encore fourni
+
+
+def test_assistant_chiffre_invente_corrige(monkeypatch):
+    # 1re reponse : 12,7 t/ha invente ; 2e reponse corrigee
+    appeler, appels = faux_modele(["Vous récolterez 12,7 t/ha.", "Je n'ai pas cette information."])
+    monkeypatch.setattr(assistant, "appeler_modele", appeler)
+    r = client.post(f"{API}/assistant", json={"question": "Combien de tonnes ?"})
+    assert len(appels) == 2 and "12.7" in appels[1][1][-1]["content"]
+    assert r.json()["reponse"] == "Je n'ai pas cette information." and r.json()["verifiee"] is True
+
+
+def test_assistant_chiffre_invente_refuse(monkeypatch):
+    appeler, _ = faux_modele(["Vous gagnerez 350000 FCFA."])
+    monkeypatch.setattr(assistant, "appeler_modele", appeler)
+    r = client.post(f"{API}/assistant", json={"question": "Combien vais-je gagner ?"})
+    assert r.json()["verifiee"] is False
+    assert "350000" not in r.json()["reponse"]
+
+
+def test_assistant_chiffres_des_faits_acceptes():
+    faits = "pluie moyenne 980 mm, écart 31.7 %, station 1978 mm, pH 5.3"
+    permis = assistant.nombres_permis(faits, "")
+    assert assistant.chiffres_inconnus("980 mm, 32 %, 1 978 mm, pH 5,3, 1re campagne", permis) == []
+    assert assistant.chiffres_inconnus("rendement 4,5 t/ha", permis) == ["4.5"]
+    # une somme d'argent est toujours refusee, meme avec un chiffre present ailleurs
+    assert assistant.chiffres_inconnus("vous gagnerez 980 FCFA", permis) == ["980 FCFA"]
+
+
+def test_assistant_question_trop_longue():
+    assert client.post(f"{API}/assistant", json={"question": "x" * 600}).status_code == 422
+
+
+def test_assistant_sans_cle(monkeypatch):
+    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    r = client.post(f"{API}/assistant", json={"question": "Bonjour ?"})
+    assert r.status_code == 503
+
+
+def test_assistant_limite_par_ip(monkeypatch):
+    appeler, _ = faux_modele(["D'accord."])
+    monkeypatch.setattr(assistant, "appeler_modele", appeler)
+    monkeypatch.setattr(assistant, "LIMITE_QUESTIONS", 2)
+    entetes = {"X-Real-IP": "10.0.0.99"}
+    codes = [client.post(f"{API}/assistant", json={"question": "Test ?"}, headers=entetes).status_code
+             for _ in range(3)]
+    assert codes == [200, 200, 429]

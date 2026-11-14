@@ -16,6 +16,7 @@ from app.config import API_PREFIX, CORS_ORIGIN_REGEX
 from app.modules.cultures.router import router as cultures_router
 from app.modules.rotations.router import router as rotations_router
 from app.modules.zones.router import router as zones_router
+from app.modules.assistant.router import router as assistant_router
 
 app = FastAPI(
     title="Field Shift API",
@@ -42,3 +43,4 @@ def health():
 app.include_router(cultures_router, prefix=API_PREFIX)
 app.include_router(zones_router, prefix=API_PREFIX)
 app.include_router(rotations_router, prefix=API_PREFIX)
+app.include_router(assistant_router, prefix=API_PREFIX)

@@ -19,3 +19,6 @@ frontend/.env
 .DS_Store
 Thumbs.db
 .vscode/
+
+# Secrets du backend (cle de l'assistant)
+backend/.env

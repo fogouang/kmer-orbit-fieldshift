@@ -466,6 +466,22 @@
       "ecartEgal": "Same score as your rotation",
       "regleIrad": "IRAD rule not followed:"
     },
+    "assistant": {
+      "titre": "A question about these rotations?",
+      "intro": "The assistant explains the results shown, in plain words. It only answers from Field Shift data.",
+      "placeholder": "Your question…",
+      "envoyer": "Send question",
+      "attente": "The assistant is checking the data…",
+      "vous": "You",
+      "assistant": "Assistant",
+      "suggestions": {
+        "meilleure": "Why is option 1 the best?",
+        "acide": "My soil is acidic, what should I do?",
+        "actuelle": "Why does my rotation lose points?",
+        "legumineuse": "What is a legume?"
+      },
+      "avertissement": "Answers written by an AI (Claude, by Anthropic) from Field Shift data only. Every number is checked automatically, but mistakes are still possible: check with an extension officer before deciding."
+    },
     "normes": {
       "titre": "IRAD Dschang’s rules",
       "intro": "Every proposed rotation follows these rules: no maize after maize, no beans after groundnut, at least 3 years before the same crop returns (4 years for potatoes and cassava).",

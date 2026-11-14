@@ -473,6 +473,22 @@
       "ecartEgal": "Même note que votre rotation",
       "regleIrad": "Règle de l’IRAD non respectée :"
     },
+    "assistant": {
+      "titre": "Une question sur ces rotations ?",
+      "intro": "L’assistant explique les résultats affichés, en mots simples. Il ne répond qu’à partir des données de Field Shift.",
+      "placeholder": "Votre question…",
+      "envoyer": "Envoyer la question",
+      "attente": "L’assistant vérifie les données…",
+      "vous": "Vous",
+      "assistant": "Assistant",
+      "suggestions": {
+        "meilleure": "Pourquoi l’option 1 est-elle la meilleure ?",
+        "acide": "Mon sol est acide, que faire ?",
+        "actuelle": "Pourquoi ma rotation perd-elle des points ?",
+        "legumineuse": "C’est quoi une légumineuse ?"
+      },
+      "avertissement": "Réponses rédigées par une IA (Claude, d’Anthropic) à partir des seules données Field Shift. Chaque chiffre est vérifié automatiquement, mais une erreur reste possible : confirmez avec un agent de vulgarisation avant de décider."
+    },
     "normes": {
       "titre": "Les règles de l’IRAD Dschang",
       "intro": "Toutes les rotations proposées respectent ces règles : pas de maïs après maïs, pas de haricot après arachide, au moins 3 ans avant de revenir à la même culture (4 ans pour la pomme de terre et le manioc).",

@@ -107,6 +107,18 @@ export interface RotationResponse {
   actuelle?: Rotation | null;
 }
 
+// Assistant : explique les rotations affichees (Claude, donnees Field Shift uniquement)
+export interface MessageAssistant {
+  role: "user" | "assistant";
+  contenu: string;
+}
+
+export interface AssistantResponse {
+  reponse: string;
+  verifiee: boolean;
+  modele: string;
+}
+
 export interface StatsComparaison {
   nb_mois: number;
   correlation: number;
@@ -148,6 +160,13 @@ export function useFieldShiftApi() {
       get<Validation>(`/zones/${zone}/validation`).catch(() => null),
     rotations: (body: RotationRequest) =>
       $fetch<RotationResponse>(`${base}/rotations`, { method: "POST", body }),
+
+    assistant: (body: {
+      question: string;
+      contexte: RotationRequest;
+      historique: MessageAssistant[];
+    }) =>
+      $fetch<AssistantResponse>(`${base}/assistant`, { method: "POST", body }),
   };
 }
 

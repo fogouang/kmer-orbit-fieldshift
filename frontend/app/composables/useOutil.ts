@@ -5,6 +5,7 @@ import type {
   Climat,
   Culture,
   Priorites,
+  RotationRequest,
   RotationResponse,
   Sol,
   Validation,
@@ -49,6 +50,8 @@ export function creerOutil() {
 
   // Resultats
   const resultat = ref<RotationResponse | null>(null);
+  // Requete qui a produit le resultat affiche : l'assistant explique exactement celui-la
+  const derniereRequete = ref<RotationRequest | null>(null);
   const calcul = ref(false);
   const erreurCalcul = ref<string | null>(null);
 
@@ -63,28 +66,28 @@ export function creerOutil() {
   );
 
   async function comparer() {
-    if (!zone.value) return;
-    calcul.value = true;
-    erreurCalcul.value = null;
+    if (!zone.value) return
+    calcul.value = true
+    erreurCalcul.value = null
+    const requete: RotationRequest = {
+      zone: zone.value.nom,
+      priorites: { ...priorites },
+      precedent: precedent.value === PARCELLE_LIBRE ? null : precedent.value,
+      nb: 3,
+      sol: analyseSol.value ? { ph: phSaisi.value, argile_pct: argileSaisie.value } : null,
+      // raisons, conseils et normes renvoyes dans la langue de la page
+      langue: locale.value === 'en' ? 'en' : 'fr',
+      actuelle: avecActuelle.value
+        ? actuelle.value.map((c) => (c === PARCELLE_LIBRE ? null : c))
+        : null,
+    }
     try {
-      resultat.value = await api.rotations({
-        zone: zone.value.nom,
-        priorites: { ...priorites },
-        precedent: precedent.value === PARCELLE_LIBRE ? null : precedent.value,
-        nb: 3,
-        sol: analyseSol.value
-          ? { ph: phSaisi.value, argile_pct: argileSaisie.value }
-          : null,
-        // raisons, conseils et normes renvoyes dans la langue de la page
-        langue: locale.value === "en" ? "en" : "fr",
-        actuelle: avecActuelle.value
-          ? actuelle.value.map((c) => (c === PARCELLE_LIBRE ? null : c))
-          : null,
-      });
+      resultat.value = await api.rotations(requete)
+      derniereRequete.value = requete
     } catch (e) {
-      erreurCalcul.value = messageErreur(e);
+      erreurCalcul.value = messageErreur(e)
     } finally {
-      calcul.value = false;
+      calcul.value = false
     }
   }
 
@@ -134,6 +137,7 @@ export function creerOutil() {
     choisirSaison,
     resultat,
     calcul,
+    derniereRequete,
     erreurCalcul,
     latitude,
     longitude,

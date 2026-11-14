@@ -37,6 +37,7 @@ onMounted(() => o.charger(t("outil.aucuneZone")));
 
       <div class="space-y-8 min-w-0">
         <OutilRotations />
+        <OutilAssistant />
         <OutilNormesIrad />
         <OutilClimat />
         <OutilValidationSol />

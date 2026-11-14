@@ -5,6 +5,7 @@ services:
       dockerfile: backend/Dockerfile
     container_name: fieldshift_backend
     restart: always
+    env_file: ./backend/.env
     ports:
       - "127.0.0.1:8010:8010"
     networks:
