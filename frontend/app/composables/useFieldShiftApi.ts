@@ -73,6 +73,8 @@ export interface RotationRequest {
   nb?: number;
   sol?: { ph: number | null; argile_pct: number | null } | null;
   langue?: "fr" | "en";
+  // Rotation habituelle, saison par saison (An 1 s1, An 1 s2, An 2 s1, An 2 s2), null = repos
+  actuelle?: (string | null)[] | null;
 }
 
 // Une culture placee dans la rotation (peut occuper plusieurs saisons, ex. manioc)
@@ -91,6 +93,7 @@ export interface Rotation {
   sequence: EtapeSequence[];
   raisons: string[];
   conseils?: string[];
+  regles_non_respectees?: string[];
 }
 
 export interface RotationResponse {
@@ -101,6 +104,7 @@ export interface RotationResponse {
   nb_rotations_evaluees: number;
   rotations: Rotation[];
   normes_irad?: Record<string, string | string[]>;
+  actuelle?: Rotation | null;
 }
 
 export interface StatsComparaison {

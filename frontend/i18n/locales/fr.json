@@ -444,7 +444,10 @@
       "estimation": "pH {ph}, argile {argile} %",
       "ph": "pH (eau)",
       "argile": "Argile (%)",
-      "comparer": "Comparer les rotations"
+      "comparer": "Comparer les rotations",
+      "actuelle": "Comparer avec ma rotation habituelle",
+      "actuelleAide": "Indiquez ce que vous cultivez d’habitude : l’outil la note avec les mêmes critères que ses propositions.",
+      "repos": "Repos (rien de semé)"
     },
     "rotations": {
       "titre": "Trois rotations à comparer",
@@ -461,7 +464,14 @@
       "vigilance": "Point de vigilance :",
       "aucune": "Aucun point de vigilance.",
       "conseils": "Conseils de l’IRAD pour cette rotation ({n})",
-      "legende": "Les notes mesurent l’adaptation des cultures au climat et au sol de la parcelle, pas un rendement en tonnes. Les bandes hachurées montrent la saison sèche, quand le sol reste nu."
+      "legende": "Les notes mesurent l’adaptation des cultures au climat et au sol de la parcelle, pas un rendement en tonnes. Les bandes hachurées montrent la saison sèche, quand le sol reste nu.",
+      "titreAvecActuelle": "Votre rotation face à trois alternatives",
+      "votreRotation": "Votre rotation",
+      "votreRotationAria": "Votre rotation habituelle, note {note} sur 100",
+      "ecartPlus": "+{n} point par rapport à votre rotation | +{n} points par rapport à votre rotation",
+      "ecartMoins": "{n} point de moins que votre rotation | {n} points de moins que votre rotation",
+      "ecartEgal": "Même note que votre rotation",
+      "regleIrad": "Règle de l’IRAD non respectée :"
     },
     "normes": {
       "titre": "Les règles de l’IRAD Dschang",

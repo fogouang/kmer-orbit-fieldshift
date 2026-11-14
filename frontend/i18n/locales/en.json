@@ -437,7 +437,10 @@
       "estimation": "pH {ph}, clay {argile}%",
       "ph": "pH (water)",
       "argile": "Clay (%)",
-      "comparer": "Compare rotations"
+      "comparer": "Compare rotations",
+      "actuelle": "Compare with my usual rotation",
+      "actuelleAide": "Enter what you usually grow: the tool scores it with the same criteria as its proposals.",
+      "repos": "Rest (nothing sown)"
     },
     "rotations": {
       "titre": "Three rotations to compare",
@@ -454,7 +457,14 @@
       "vigilance": "Watch out:",
       "aucune": "Nothing to watch out for.",
       "conseils": "IRAD advice for this rotation ({n})",
-      "legende": "Scores measure how well crops suit the plot’s climate and soil, not a yield in tonnes. Hatched blocks show the dry season, when the soil is left bare."
+      "legende": "Scores measure how well crops suit the plot’s climate and soil, not a yield in tonnes. Hatched blocks show the dry season, when the soil is left bare.",
+      "titreAvecActuelle": "Your rotation against three alternatives",
+      "votreRotation": "Your rotation",
+      "votreRotationAria": "Your usual rotation, score {note} out of 100",
+      "ecartPlus": "+{n} point compared with your rotation | +{n} points compared with your rotation",
+      "ecartMoins": "{n} point below your rotation | {n} points below your rotation",
+      "ecartEgal": "Same score as your rotation",
+      "regleIrad": "IRAD rule not followed:"
     },
     "normes": {
       "titre": "IRAD Dschang’s rules",

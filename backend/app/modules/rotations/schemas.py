@@ -23,6 +23,15 @@ class RotationRequest(BaseModel):
     nb: int = Field(3, ge=1, le=5, description="Nombre de rotations proposees")
     sol: SolSaisi | None = None
     langue: Literal["fr", "en"] = Field("fr", description="Langue des raisons, conseils et normes")
+    actuelle: list[str | None] | None = Field(
+        None,
+        min_length=4,
+        max_length=4,
+        description=(
+            "Rotation actuelle de l'agriculteur, saison par saison (An 1 saison 1, An 1 saison 2, "
+            "An 2 saison 1, An 2 saison 2) ; null = parcelle au repos. Notee avec les memes criteres."
+        ),
+    )
 
 class PeriodeCulture(BaseModel):
     annee: str
@@ -44,6 +53,7 @@ class RotationOut(BaseModel):
     sequence: list[EtapeRotation]
     raisons: list[str]
     conseils: list[str] = []
+    regles_non_respectees: list[str] = []
 
 
 class SolUtilise(BaseModel):
@@ -60,3 +70,4 @@ class RotationResponse(BaseModel):
     nb_rotations_evaluees: int
     rotations: list[RotationOut]
     normes_irad: dict = {}
+    actuelle: RotationOut | None = None

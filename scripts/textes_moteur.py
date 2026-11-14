@@ -52,6 +52,10 @@ MESSAGES: dict[str, dict[str, str]] = {
         "conseil_periodes": "{nom}, périodes à surveiller : {etapes}.",
         "periode": "{stade} : {risque}",
         "separateur": " ; ",
+        "succession_interdite": "{a} puis {b} : succession interdite par l'IRAD",
+        "retour_trop_tot": "{nom} revient après {n} campagne(s) seulement : l'IRAD conseille d'attendre {ans} ans",
+        "hors_saison": "{nom} semé en {saison} : hors de ses saisons habituelles",
+        "repos": "Parcelle au repos ({moment}) : le sol se reconstitue, mais rien n'est récolté",
     },
     "en": {
         "pluie_cycle": "enough rain over the cycle in only {p} of years",
@@ -77,6 +81,10 @@ MESSAGES: dict[str, dict[str, str]] = {
         "conseil_periodes": "{nom}, critical periods: {etapes}.",
         "periode": "{stade}: {risque}",
         "separateur": "; ",
+        "succession_interdite": "{a} then {b}: sequence forbidden by IRAD",
+        "retour_trop_tot": "{nom} comes back after only {n} season(s): IRAD advises waiting {ans} years",
+        "hors_saison": "{nom} sown in the {saison}: outside its usual seasons",
+        "repos": "Plot left to rest ({moment}): the soil recovers, but nothing is harvested",
     },
 }
 

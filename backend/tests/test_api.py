@@ -147,3 +147,38 @@ def test_rotations_en_anglais():
 def test_langue_inconnue_refusee():
     r = client.post("/api/v1/rotations", json={"zone": "dschang", "langue": "de"})
     assert r.status_code == 422
+    
+
+
+def test_rotation_actuelle_notee():
+    # maïs et haricot qui reviennent chaque annee : notee, mais delai de retour IRAD signale
+    r = client.post(f"{API}/rotations", json={"actuelle": ["mais", "haricot", "mais", "haricot"]})
+    assert r.status_code == 200
+    actuelle = r.json()["actuelle"]
+    assert actuelle["rang"] == 0
+    assert [e["culture"] for e in actuelle["sequence"]] == ["mais", "haricot", "mais", "haricot"]
+    assert any("IRAD" in a for a in actuelle["regles_non_respectees"])
+    assert r.json()["rotations"][0]["note"] >= actuelle["note"]
+
+
+def test_rotation_actuelle_succession_interdite():
+    r = client.post(f"{API}/rotations", json={"actuelle": ["mais", "mais", None, "haricot"], "langue": "en"})
+    assert r.status_code == 200
+    alertes = r.json()["actuelle"]["regles_non_respectees"]
+    assert any("forbidden by IRAD" in a for a in alertes)
+
+
+def test_rotation_actuelle_manioc_sur_deux_saisons():
+    r = client.post(f"{API}/rotations", json={"actuelle": ["manioc", "manioc", "haricot", "mais"]})
+    sequence = r.json()["actuelle"]["sequence"]
+    assert sequence[0]["culture"] == "manioc" and len(sequence[0]["periodes"]) == 2
+
+
+def test_rotation_actuelle_invalide():
+    assert client.post(f"{API}/rotations", json={"actuelle": ["mais", "haricot"]}).status_code == 422
+    assert client.post(f"{API}/rotations", json={"actuelle": ["cafe", None, None, None]}).status_code == 422
+    assert client.post(f"{API}/rotations", json={"actuelle": [None, None, None, None]}).status_code == 422
+
+
+def test_sans_rotation_actuelle():
+    assert client.post(f"{API}/rotations", json={}).json()["actuelle"] is None

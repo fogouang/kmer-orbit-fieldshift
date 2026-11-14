@@ -1,30 +1,61 @@
 <script setup lang="ts">
 // Panneau de gauche : la parcelle et les choix de l'agriculteur
-const { t } = useI18n()
-const o = useOutil()
+const { t } = useI18n();
+const o = useOutil();
 
-const CRITERES = ['rendement', 'eau', 'sol'] as const
+const CRITERES = ["rendement", "eau", "sol"] as const;
+
+// Les 4 saisons de la rotation habituelle, dans l'ordre envoye au moteur
+const SAISONS_ACTUELLE = [
+  { annee: "annee1", saison: "saison_1" },
+  { annee: "annee1", saison: "saison_2" },
+  { annee: "annee2", saison: "saison_1" },
+  { annee: "annee2", saison: "saison_2" },
+] as const;
+
+const optionsActuelle = computed(() => [
+  { label: t("outil.panneau.repos"), value: PARCELLE_LIBRE },
+  ...o.cultures.value.map((c) => ({
+    label: t(`cultures.${c.id}`),
+    value: c.id,
+  })),
+]);
 
 const optionsPrecedent = computed(() => [
-  { label: t('outil.panneau.parcelleLibre'), value: PARCELLE_LIBRE },
-  ...o.cultures.value.map((c) => ({ label: t(`cultures.${c.id}`), value: c.id })),
-])
+  { label: t("outil.panneau.parcelleLibre"), value: PARCELLE_LIBRE },
+  ...o.cultures.value.map((c) => ({
+    label: t(`cultures.${c.id}`),
+    value: c.id,
+  })),
+]);
 </script>
 
 <template>
-  <aside class="rounded-2xl bg-white border border-trait p-5 space-y-6 lg:sticky lg:top-6" :aria-label="t('outil.panneau.aria')">
+  <aside
+    class="rounded-2xl bg-white border border-trait p-5 space-y-6 lg:sticky lg:top-6"
+    :aria-label="t('outil.panneau.aria')"
+  >
     <!-- Parcelle -->
     <section>
-      <h2 class="font-bold text-lg text-foret">{{ t('outil.panneau.parcelle') }}</h2>
+      <h2 class="font-bold text-lg text-foret">
+        {{ t("outil.panneau.parcelle") }}
+      </h2>
       <p class="text-sm text-encre-2 mb-3 tabular-nums">
-        {{ o.nomZone.value }}, {{ o.latitude.value.toFixed(4) }} N, {{ o.longitude.value.toFixed(4) }} E
+        {{ o.nomZone.value }}, {{ o.latitude.value.toFixed(4) }} N,
+        {{ o.longitude.value.toFixed(4) }} E
       </p>
-      <ParcelleMap :latitude="o.latitude.value" :longitude="o.longitude.value" :nom="o.nomZone.value" />
+      <ParcelleMap
+        :latitude="o.latitude.value"
+        :longitude="o.longitude.value"
+        :nom="o.nomZone.value"
+      />
     </section>
 
     <!-- Culture en place -->
     <section>
-      <label for="precedent" class="font-semibold block mb-1.5 text-foret">{{ t('outil.panneau.precedent') }}</label>
+      <label for="precedent" class="font-semibold block mb-1.5 text-foret">{{
+        t("outil.panneau.precedent")
+      }}</label>
       <Select
         v-model="o.precedent.value"
         input-id="precedent"
@@ -33,20 +64,63 @@ const optionsPrecedent = computed(() => [
         option-value="value"
         class="w-full"
       />
-      <p class="text-xs text-encre-2 mt-1.5">{{ t('outil.panneau.precedentAide') }}</p>
+      <p class="text-xs text-encre-2 mt-1.5">
+        {{ t("outil.panneau.precedentAide") }}
+      </p>
     </section>
 
+        <!-- Rotation habituelle, comparee aux propositions -->
+    <section>
+      <div class="flex items-center justify-between gap-3">
+        <label for="avec-actuelle" class="font-semibold text-foret">{{ t('outil.panneau.actuelle') }}</label>
+        <ToggleSwitch v-model="o.avecActuelle.value" input-id="avec-actuelle" />
+      </div>
+      <p class="text-xs text-encre-2 mt-1">{{ t('outil.panneau.actuelleAide') }}</p>
+      <div v-if="o.avecActuelle.value" class="grid grid-cols-2 gap-3 mt-3">
+        <div v-for="(s, i) in SAISONS_ACTUELLE" :key="i">
+          <label :for="`actuelle-${i}`" class="text-xs block mb-1 text-encre-2">
+            <span class="font-semibold text-foret">{{ t(`outil.${s.annee}`) }}</span>,
+            {{ t(`outil.saisonsCourt.${s.saison}`) }}
+          </label>
+          <Select
+            :model-value="o.actuelle.value[i]"
+            :input-id="`actuelle-${i}`"
+            :options="optionsActuelle"
+            option-label="label"
+            option-value="value"
+            class="w-full"
+            @update:model-value="(v: string) => o.choisirSaison(i, v)"
+          />
+        </div>
+      </div>
+    </section>
+    
     <!-- Priorites -->
     <section>
-      <h2 class="font-semibold mb-3 text-foret">{{ t('outil.panneau.priorites') }}</h2>
+      <h2 class="font-semibold mb-3 text-foret">
+        {{ t("outil.panneau.priorites") }}
+      </h2>
       <div class="space-y-5">
         <div v-for="c in CRITERES" :key="c">
           <div class="flex justify-between items-baseline gap-2">
-            <span :id="`label-${c}`" class="font-medium">{{ t(`outil.criteres.${c}.label`) }}</span>
-            <span class="text-sm text-primary font-semibold">{{ t(`outil.importance.${o.priorites[c]}`) }}</span>
+            <span :id="`label-${c}`" class="font-medium">{{
+              t(`outil.criteres.${c}.label`)
+            }}</span>
+            <span class="text-sm text-primary font-semibold">{{
+              t(`outil.importance.${o.priorites[c]}`)
+            }}</span>
           </div>
-          <p class="text-xs text-encre-2 mb-3">{{ t(`outil.criteres.${c}.aide`) }}</p>
-          <Slider v-model="o.priorites[c]" :min="1" :max="5" :step="1" :aria-labelledby="`label-${c}`" class="mx-1" />
+          <p class="text-xs text-encre-2 mb-3">
+            {{ t(`outil.criteres.${c}.aide`) }}
+          </p>
+          <Slider
+            v-model="o.priorites[c]"
+            :min="1"
+            :max="5"
+            :step="1"
+            :aria-labelledby="`label-${c}`"
+            class="mx-1"
+          />
         </div>
       </div>
     </section>
@@ -54,18 +128,27 @@ const optionsPrecedent = computed(() => [
     <!-- Analyse de sol -->
     <section>
       <div class="flex items-center justify-between gap-3">
-        <label for="analyse-sol" class="font-semibold text-foret">{{ t('outil.panneau.analyseSol') }}</label>
+        <label for="analyse-sol" class="font-semibold text-foret">{{
+          t("outil.panneau.analyseSol")
+        }}</label>
         <ToggleSwitch v-model="o.analyseSol.value" input-id="analyse-sol" />
       </div>
       <p class="text-xs text-encre-2 mt-1">
-        {{ t('outil.panneau.analyseSolAide') }}
+        {{ t("outil.panneau.analyseSolAide") }}
         <template v-if="o.sol.value">
-          ({{ t('outil.panneau.estimation', { ph: o.sol.value.ph, argile: Math.round(o.sol.value.argile_pct) }) }})
+          ({{
+            t("outil.panneau.estimation", {
+              ph: o.sol.value.ph,
+              argile: Math.round(o.sol.value.argile_pct),
+            })
+          }})
         </template>
       </p>
       <div v-if="o.analyseSol.value" class="grid grid-cols-2 gap-3 mt-3">
         <div>
-          <label for="ph" class="text-sm block mb-1">{{ t('outil.panneau.ph') }}</label>
+          <label for="ph" class="text-sm block mb-1">{{
+            t("outil.panneau.ph")
+          }}</label>
           <InputNumber
             v-model="o.phSaisi.value"
             input-id="ph"
@@ -78,13 +161,17 @@ const optionsPrecedent = computed(() => [
           />
         </div>
         <div>
-          <label for="argile" class="text-sm block mb-1">{{ t('outil.panneau.argile') }}</label>
+          <label for="argile" class="text-sm block mb-1">{{
+            t("outil.panneau.argile")
+          }}</label>
           <InputNumber
             v-model="o.argileSaisie.value"
             input-id="argile"
             :min="0"
             :max="100"
-            :placeholder="o.sol.value ? String(Math.round(o.sol.value.argile_pct)) : ''"
+            :placeholder="
+              o.sol.value ? String(Math.round(o.sol.value.argile_pct)) : ''
+            "
             fluid
           />
         </div>

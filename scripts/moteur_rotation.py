@@ -66,6 +66,10 @@ FACTEUR_DEMARRAGE = 0.6       # une jeune culture consomme moins d'eau (coeffici
 FACTEUR_SAISON_DECONSEILLEE = 0.6  # saison deconseillee par l'IRAD (pourriture) : potentiel reduit de 40 %
 BONUS_SUCCESSION_CONSEILLEE = 5    # succession citee comme bonne par l'IRAD
 
+PENALITE_SUCCESSION_INTERDITE = 15 # rotation actuelle : succession interdite par l'IRAD
+PENALITE_RETOUR_TROP_TOT = 10      # rotation actuelle : culture remise avant le delai de retour IRAD
+BONUS_REPOS = 5                    # rotation actuelle : saison laissee au repos (jachere)
+
 
 
 # --------------------------------------------------------------------------
@@ -290,6 +294,7 @@ class Evaluation:
     total: float = 0.0
     raisons: list[str] = field(default_factory=list)
     conseils: list[str] = field(default_factory=list)
+    alertes: list[str] = field(default_factory=list)   # regles de l'IRAD non respectees (rotation actuelle)
 
 
 def evaluer(blocs: list[Bloc], cultures, climat, sol, precedent: str | None,
@@ -375,6 +380,94 @@ def conseiller(blocs: list[Bloc], cultures, sol, tx: Textes | None = None) -> li
             conseils.append(tx.msg("conseil_periodes", nom=tx.nom(crop), etapes=etapes))
     return conseils
 
+# --------------------------------------------------------------------------
+# 4 bis. La rotation actuelle de l'agriculteur (point de comparaison)
+# --------------------------------------------------------------------------
+def blocs_depuis_saisons(choix: list[str | None]) -> list[Bloc]:
+    """Rotation saisie saison par saison (4 valeurs, None = parcelle au repos).
+
+    Le manioc seme en 1re campagne et encore en place en 2e campagne de la meme
+    annee forme un seul bloc de 2 saisons, comme dans les rotations generees.
+    """
+    if len(choix) != len(CALENDRIER):
+        raise ValueError(f"La rotation actuelle doit avoir {len(CALENDRIER)} saisons.")
+    blocs = []
+    i = 0
+    while i < len(choix):
+        crop_id = choix[i]
+        if crop_id is None:
+            i += 1
+            continue
+        duree = 1
+        if (crop_id in SAISONS_OCCUPEES and i % 2 == 0 and i + 1 < len(choix)
+                and choix[i + 1] == crop_id):
+            duree = SAISONS_OCCUPEES[crop_id]
+        blocs.append(Bloc(crop_id, i, list(range(i, i + duree))))
+        i += duree
+    return blocs
+
+
+def regles_non_respectees(blocs: list[Bloc], cultures, precedent: str | None,
+                          tx: Textes) -> tuple[list[str], float]:
+    """Regles de l'IRAD que la rotation ne respecte pas, et la penalite de sante du sol."""
+    alertes = []
+    penalite = 0.0
+    historique = ([(-1, precedent)] if precedent else []) + [(b.debut, b.crop_id) for b in blocs]
+
+    # Successions interdites (ex. maïs apres maïs, haricot apres arachide)
+    for (_, a), (_, b) in zip(historique, historique[1:]):
+        if a in cultures[b].get("precedents_interdits", []):
+            alertes.append(tx.msg("succession_interdite", a=tx.nom(cultures[a]), b=tx.nom(cultures[b])))
+            penalite += PENALITE_SUCCESSION_INTERDITE
+
+    # Delai de retour : une culture ne revient pas avant 3 ou 4 ans
+    for crop_id in dict.fromkeys(cid for _, cid in historique):
+        positions = [pos for pos, cid in historique if cid == crop_id]
+        delai = cultures[crop_id]["delai_retour_ans"]
+        for avant, apres in zip(positions, positions[1:]):
+            if apres - avant < 2 * delai:
+                alertes.append(tx.msg("retour_trop_tot", nom=tx.nom(cultures[crop_id]),
+                                      n=apres - avant, ans=delai))
+                penalite += PENALITE_RETOUR_TROP_TOT
+
+    # Culture semee hors de ses saisons habituelles (ex. manioc en 2e campagne)
+    for b in blocs:
+        saison = CALENDRIER[b.debut][1]
+        if saison not in cultures[b.crop_id]["saisons_possibles"]:
+            alertes.append(tx.msg("hors_saison", nom=tx.nom(cultures[b.crop_id]), saison=tx.saison(saison)))
+    return list(dict.fromkeys(alertes)), penalite  # une meme alerte n'est affichee qu'une fois
+
+
+def evaluer_actuelle(choix: list[str | None], cultures, climat, sol, precedent: str | None,
+                     tx: Textes | None = None) -> Evaluation:
+    """Note la rotation habituelle de l'agriculteur avec les memes criteres que les propositions.
+
+    Contrairement aux rotations generees, elle peut enfreindre les regles de l'IRAD :
+    elle est quand meme notee, et chaque regle non respectee est signalee.
+    """
+    tx = tx or Textes()
+    blocs = blocs_depuis_saisons(choix)
+    if not blocs:
+        raise ValueError("La rotation actuelle doit contenir au moins une culture.")
+    e = evaluer(blocs, cultures, climat, sol, precedent, tx)
+
+    alertes, penalite = regles_non_respectees(blocs, cultures, precedent, tx)
+    e.alertes = alertes
+
+    # Saisons au repos : pas de recolte, mais le sol se reconstitue
+    saisons_cultivees = sum(len(b.saisons) for b in blocs)
+    repos = [i for i, c in enumerate(choix) if c is None]
+    for i in repos:
+        annee, saison = CALENDRIER[i]
+        e.raisons.append(tx.msg("repos", moment=tx.msg("moment", annee=tx.annee(annee), saison=tx.saison(saison))))
+    e.rendement *= saisons_cultivees / len(CALENDRIER)
+    e.sol = max(0.0, min(100.0, e.sol - penalite + BONUS_REPOS * len(repos)))
+    return e
+
+
+def note_globale(e: Evaluation, poids: dict[str, float]) -> float:
+    """Note sur 100 selon les priorites de l'agriculteur."""
+    return (poids["rendement"] * e.rendement + poids["eau"] * e.eau + poids["sol"] * e.sol) / sum(poids.values())
 
 # --------------------------------------------------------------------------
 # 5. Choix des meilleures rotations selon les priorites
@@ -382,7 +475,7 @@ def conseiller(blocs: list[Bloc], cultures, sol, tx: Textes | None = None) -> li
 def classer(evaluations: list[Evaluation], poids: dict[str, float], nb: int = 3) -> list[Evaluation]:
     somme = sum(poids.values())
     for e in evaluations:
-        e.total = (poids["rendement"] * e.rendement + poids["eau"] * e.eau + poids["sol"] * e.sol) / somme
+        e.total = note_globale(e, poids)
     evaluations.sort(key=lambda e: e.total, reverse=True)
 
     def composition(e):
@@ -429,6 +522,8 @@ def main():
                         help="Culture actuellement sur la parcelle (id de crops.json, ex. mais)")
     parser.add_argument("--nb", type=int, default=3, help="Nombre de rotations proposees")
     parser.add_argument("--langue", default="fr", choices=LANGUES, help="Langue des raisons et conseils")
+    parser.add_argument("--actuelle", default=None,
+                        help="Rotation actuelle sur 4 saisons, ex. mais,haricot,mais,haricot (repos = parcelle au repos)")
     args = parser.parse_args()
 
     cultures, _ = charger_cultures()
@@ -442,6 +537,24 @@ def main():
     evaluations = [evaluer(r, cultures, climat, sol, args.precedent, tx) for r in rotations]
     poids = {"rendement": args.rendement, "eau": args.eau, "sol": args.sol}
     meilleures = classer(evaluations, poids, args.nb)
+    
+    
+    if args.actuelle:
+        choix = [None if c.strip() == "repos" else c.strip() for c in args.actuelle.split(",")]
+        inconnues = [c for c in choix if c and c not in cultures]
+        if inconnues:
+            raise SystemExit(f"Culture inconnue dans --actuelle : {', '.join(inconnues)}")
+        actuelle = evaluer_actuelle(choix, cultures, climat, sol, args.precedent, tx)
+        actuelle.total = note_globale(actuelle, poids)
+        print(f"===== ROTATION ACTUELLE : note {actuelle.total:.0f}/100 =====")
+        print(decrire(actuelle, cultures, tx))
+        print(f"  Rendement {actuelle.rendement:.0f}/100 | Sécurité en eau {actuelle.eau:.0f}/100 "
+              f"| Santé du sol {actuelle.sol:.0f}/100")
+        for a in actuelle.alertes:
+            print(f"  ! {a}")
+        for r in actuelle.raisons:
+            print(f"  - {r}")
+        print()
 
     # Resume console
     print("===== CONTEXTE =====")
