@@ -1,0 +1,76 @@
+@layer theme, base, primevue, utilities;
+
+@import "tailwindcss";
+@plugin "tailwindcss-primeui";
+
+@theme {
+  --font-sans: "Archivo", ui-sans-serif, system-ui, sans-serif;
+
+  /* Les 3 couleurs de la marque */
+  --color-feuille: #43aa5c;    /* vert feuille : accents, icones, graphiques */
+  --color-foret: #164333;      /* vert foret : fonds sombres, titres */
+  --color-soleil: #f8c32c;     /* jaune soleil / mais : mise en avant (toujours sur fond foret) */
+
+  /* Nuances derivees */
+  --color-foret-2: #0d2a1f;    /* foret plus profond : degrades */
+  --color-soleil-pale: #fdf1c9;
+
+  /* Interface */
+  --color-brume: #f1f6f2;      /* fond general */
+  --color-encre: #164333;      /* texte principal = foret (contraste 11:1) */
+  --color-encre-2: #4d6359;    /* texte secondaire */
+  --color-trait: #d5e2d9;      /* bordures */
+
+  /* Couleurs des notes (inchangees : elles ont un sens) */
+  --color-andosol: #6b3e26;    /* sante du sol */
+  --color-eau: #2a78d6;        /* securite en eau */
+  --color-ble: #b07a00;        /* rendement */
+}
+
+html,
+body {
+  background: var(--color-brume);
+  color: var(--color-encre);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Titres : la largeur variable d'Archivo porte la personnalite de la marque */
+.titre-large {
+  font-stretch: 118%;
+  font-weight: 750;
+  letter-spacing: -0.01em;
+}
+
+/* Petit sur-titre : trait + texte en capitales espacees */
+.sur-titre {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 650;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.sur-titre::before {
+  content: "";
+  width: 2rem;
+  height: 2px;
+  background: currentColor;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-foret);
+  outline-offset: 3px;
+}
+/* Sur fond sombre (hero, bandeaux foret), le contour passe en jaune soleil */
+.fond-sombre :focus-visible {
+  outline-color: var(--color-soleil);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}

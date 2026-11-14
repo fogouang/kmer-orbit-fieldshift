@@ -1,0 +1,26 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: fieldshift_backend
+    restart: always
+    ports:
+      - "127.0.0.1:8010:8010"
+    networks:
+      - fieldshift_network
+
+  frontend:
+    build: ./frontend
+    container_name: fieldshift_frontend
+    restart: always
+    env_file: ./frontend/.env
+    ports:
+      - "127.0.0.1:3010:3010"
+    depends_on:
+      - backend
+    networks:
+      - fieldshift_network
+
+networks:
+  fieldshift_network:

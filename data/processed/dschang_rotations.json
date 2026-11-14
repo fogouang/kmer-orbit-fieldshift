@@ -1,0 +1,171 @@
+{
+  "priorites": {
+    "rendement": 3,
+    "eau": 3,
+    "sol": 3
+  },
+  "precedent": null,
+  "rotations": [
+    {
+      "rang": 1,
+      "note": 88.7,
+      "rendement": 90.5,
+      "eau": 97.5,
+      "sante_sol": 78.0,
+      "sequence": [
+        {
+          "culture": "mais",
+          "nom": "Maize",
+          "saisons": [
+            "An 1 saison_1"
+          ]
+        },
+        {
+          "culture": "haricot",
+          "nom": "Beans",
+          "saisons": [
+            "An 1 saison_2"
+          ]
+        },
+        {
+          "culture": "pomme_de_terre",
+          "nom": "Potato",
+          "saisons": [
+            "An 2 saison_1"
+          ]
+        },
+        {
+          "culture": "arachide",
+          "nom": "Groundnut",
+          "saisons": [
+            "An 2 saison_2"
+          ]
+        }
+      ],
+      "raisons": [
+        "Maize (Year 1, 1st season): borderline soil for this crop (pH 5.3, IRAD optimum 5.5-6.5)",
+        "Beans (Year 1, 2nd season): borderline soil for this crop (pH 5.3, IRAD optimum 5.5-6.5)",
+        "Potato (Year 2, 1st season): temperature (22.4 °C) outside the optimum; borderline soil for this crop (pH 5.3, IRAD optimum 5.5-6.5)",
+        "Groundnut (Year 2, 2nd season): temperature (21.4 °C) outside the optimum; borderline soil for this crop (pH 5.3, IRAD optimum 5.5-6.5)",
+        "Maize then Beans: sequence recommended by IRAD",
+        "Beans then Potato: sequence recommended by IRAD",
+        "Beans before Potato: the legume enriches the soil with nitrogen",
+        "Potato then Groundnut: sequence recommended by IRAD",
+        "Potato in the 1st season: little ground cover, erosion risk (wettest season)"
+      ],
+      "conseils": [
+        "Acidic soil (pH 5.3): apply 5 to 10 t/ha of compost or manure and wood ash to raise the pH towards 5.5-6.5 (IRAD).",
+        "Groundnut: apply wood ash, it needs calcium on acidic soil (IRAD).",
+        "Maize, critical periods: flowering: critical water stress; grain filling: critical water stress, poorly filled cobs.",
+        "Beans, critical periods: flowering: sensitive to water shortage.",
+        "Potato, critical periods: tuber formation (day 40 to 70): needs regular water.",
+        "Groundnut, critical periods: up to day 60: needs regular water; end of cycle: too much water rots the pods."
+      ]
+    },
+    {
+      "rang": 2,
+      "note": 86.2,
+      "rendement": 91.9,
+      "eau": 98.8,
+      "sante_sol": 68.0,
+      "sequence": [
+        {
+          "culture": "arachide",
+          "nom": "Groundnut",
+          "saisons": [
+            "An 1 saison_1"
+          ]
+        },
+        {
+          "culture": "mais",
+          "nom": "Maize",
+          "saisons": [
+            "An 1 saison_2"
+          ]
+        },
+        {
+          "culture": "manioc",
+          "nom": "Cassava",
+          "saisons": [
+            "An 2 saison_1",
+            "An 2 saison_2"
+          ]
+        }
+      ],
+      "raisons": [
+        "Groundnut (Year 1, 1st season): risk of waterlogging on clay soil in 10% of years; borderline soil for this crop (pH 5.3, IRAD optimum 5.5-6.5)",
+        "Maize (Year 1, 2nd season): borderline soil for this crop (pH 5.3, IRAD optimum 5.5-6.5)",
+        "Cassava (Year 2, 1st season): borderline soil for this crop (pH 5.3, IRAD optimum 5.5-6.5)",
+        "Groundnut then Maize: sequence recommended by IRAD",
+        "Groundnut before Maize: the legume enriches the soil with nitrogen",
+        "Maize then Cassava: sequence recommended by IRAD",
+        "Cassava in the 1st season: little ground cover, erosion risk (wettest season)"
+      ],
+      "conseils": [
+        "Acidic soil (pH 5.3): apply 5 to 10 t/ha of compost or manure and wood ash to raise the pH towards 5.5-6.5 (IRAD).",
+        "Groundnut: apply wood ash, it needs calcium on acidic soil (IRAD).",
+        "Cassava depletes potassium: follow it with a legume, then maize, and apply ash or manure (IRAD).",
+        "Groundnut, critical periods: up to day 60: needs regular water; end of cycle: too much water rots the pods.",
+        "Maize, critical periods: flowering: critical water stress; grain filling: critical water stress, poorly filled cobs."
+      ]
+    },
+    {
+      "rang": 3,
+      "note": 82.1,
+      "rendement": 92.5,
+      "eau": 98.8,
+      "sante_sol": 55.0,
+      "sequence": [
+        {
+          "culture": "mais",
+          "nom": "Maize",
+          "saisons": [
+            "An 1 saison_1"
+          ]
+        },
+        {
+          "culture": "haricot",
+          "nom": "Beans",
+          "saisons": [
+            "An 1 saison_2"
+          ]
+        },
+        {
+          "culture": "manioc",
+          "nom": "Cassava",
+          "saisons": [
+            "An 2 saison_1",
+            "An 2 saison_2"
+          ]
+        }
+      ],
+      "raisons": [
+        "Maize (Year 1, 1st season): borderline soil for this crop (pH 5.3, IRAD optimum 5.5-6.5)",
+        "Beans (Year 1, 2nd season): borderline soil for this crop (pH 5.3, IRAD optimum 5.5-6.5)",
+        "Cassava (Year 2, 1st season): borderline soil for this crop (pH 5.3, IRAD optimum 5.5-6.5)",
+        "Maize then Beans: sequence recommended by IRAD",
+        "Beans then Cassava: sequence recommended by IRAD",
+        "Cassava in the 1st season: little ground cover, erosion risk (wettest season)"
+      ],
+      "conseils": [
+        "Acidic soil (pH 5.3): apply 5 to 10 t/ha of compost or manure and wood ash to raise the pH towards 5.5-6.5 (IRAD).",
+        "Cassava depletes potassium: follow it with a legume, then maize, and apply ash or manure (IRAD).",
+        "Maize, critical periods: flowering: critical water stress; grain filling: critical water stress, poorly filled cobs.",
+        "Beans, critical periods: flowering: sensitive to water shortage."
+      ]
+    }
+  ],
+  "normes_irad": {
+    "jachere": "Leave one season in three as fallow, with a cover crop (Mucuna or Stylosanthes).",
+    "association": "Intercropping maize + beans or maize + groundnut is acceptable.",
+    "amendement": "Apply 5 to 10 t/ha of compost or manure, plus wood ash, to raise the pH towards 5.5-6.5.",
+    "travail_du_sol": "Light tillage.",
+    "varietes": "Rotate varieties.",
+    "erreurs_a_eviter": [
+      "Beans after beans: yield cut in half.",
+      "Cassava after cassava: dead soil and mealybugs.",
+      "Maize after maize without fertiliser: empty cobs."
+    ],
+    "exemple_rotation_4_ans": "4-year, 4-plot rotation example provided by IRAD (table to be added here)."
+  }
+}

@@ -1,0 +1,538 @@
+{
+  "meta": {
+    "titre": "Field Shift : des rotations de cultures adaptées à un climat qui change",
+    "description": "Comparer des rotations de cultures adaptées au climat et au sol de sa parcelle, à partir des données d'observation de la Terre de la NASA."
+  },
+  "langue": {
+    "choisir": "Choisir la langue",
+    "fr": "Français",
+    "en": "English"
+  },
+  "nav": {
+    "accueil": "Field Shift, accueil",
+    "equipe": "Kmer Orbit · NASA Space Apps 2026",
+    "essayer": "Essayer l’outil"
+  },
+  "cultures": {
+    "mais": "Maïs",
+    "haricot": "Haricot",
+    "arachide": "Arachide",
+    "manioc": "Manioc",
+    "pomme_de_terre": "Pomme de terre"
+  },
+  "hero": {
+    "aria": "Présentation de Field Shift",
+    "carrousel": "carrousel",
+    "slides": {
+      "climat": {
+        "surTitre": "Données NASA · Savoir IRAD",
+        "titre": "Des rotations adaptées à un climat qui",
+        "surligne": "change",
+        "texte": "Field Shift croise les satellites de la NASA et l’expertise de l’IRAD Dschang pour aider les agriculteurs à choisir quoi semer, et quand.",
+        "chiffre": "−12 %",
+        "legende": "de pluie à Dschang en 10 ans"
+      },
+      "semis": {
+        "surTitre": "Hautes terres de l’Ouest",
+        "titre": "Les pluies changent, les semis doivent suivre",
+        "surligne": "aussi",
+        "texte": "Jusqu’à 55 jours d’écart sur le début de la saison des pluies selon les années. L’outil en tient compte pour chaque culture.",
+        "chiffre": "55 jours",
+        "legende": "d’écart sur le début des pluies"
+      },
+      "validation": {
+        "surTitre": "Validé sur le terrain",
+        "titre": "Des satellites vérifiés par la",
+        "surligne": "station IRAD",
+        "texte": "Dix ans de mesures au sol : la pluie de GPM IMERG colle à 2 % près. NASA POWER, qui la surestime de 32 %, est écartée.",
+        "chiffre": "0,79",
+        "legende": "corrélation satellite / station"
+      }
+    },
+    "cta": "Comparer mes rotations",
+    "commentCaMarche": "Comment ça marche",
+    "agriculteurAlt": "Agriculteur souriant portant un panier de maïs, haricots, arachides, manioc et pommes de terre",
+    "carte": {
+      "parcelle": "Parcelle IRAD · Dschang",
+      "titre": "Rotation proposée sur 2 ans",
+      "sequence": "Cultures saison par saison",
+      "alternance": "L’alternance recommandée par l’IRAD"
+    },
+    "sources": "Données : NASA GPM IMERG · NASA POWER · ISRIC SoilGrids · Station IRAD Dschang",
+    "choisirSlide": "Choisir une diapositive",
+    "slide": "Diapositive {numero} : {titre}",
+    "precedente": "Diapositive précédente",
+    "suivante": "Diapositive suivante",
+    "pause": "Mettre le défilement en pause",
+    "reprendre": "Reprendre le défilement"
+  },
+  "mois": {
+    "1": "Janv.",
+    "2": "Févr.",
+    "3": "Mars",
+    "4": "Avr.",
+    "5": "Mai",
+    "6": "Juin",
+    "7": "Juil.",
+    "8": "Août",
+    "9": "Sept.",
+    "10": "Oct.",
+    "11": "Nov.",
+    "12": "Déc."
+  },
+  "moisLong": {
+    "1": "Janvier",
+    "2": "Février",
+    "3": "Mars",
+    "4": "Avril",
+    "5": "Mai",
+    "6": "Juin",
+    "7": "Juillet",
+    "8": "Août",
+    "9": "Septembre",
+    "10": "Octobre",
+    "11": "Novembre",
+    "12": "Décembre"
+  },
+  "probleme": {
+    "surTitre": "Le problème",
+    "titre": "Les calendriers agricoles d’hier ne suffisent plus",
+    "intro": "À Dschang, la pluie baisse, la saison des pluies démarre plus tôt ou plus tard selon les années, et la chaleur monte. Pourtant, on sème encore aux mêmes dates, avec les mêmes successions de cultures.",
+    "chiffres": {
+      "pluie": {
+        "titre": "de pluie en 10 ans",
+        "texte": "2 181 mm par an en moyenne entre 2005 et 2014, contre 1 921 mm entre 2015 et 2024.",
+        "source": "Source : NASA GPM IMERG"
+      },
+      "debut": {
+        "titre": "jours d’écart sur le début des pluies",
+        "texte": "Selon les années, la saison des pluies a démarré entre le 22 février et le 18 avril. Semer trop tôt, c’est risquer de perdre ses plants.",
+        "source": "Source : NASA GPM IMERG, données journalières"
+      },
+      "chaleur": {
+        "titre": "de température depuis 2012",
+        "texte": "Une chaleur qui pèse sur les cultures qui aiment la fraîcheur, comme la pomme de terre et le haricot.",
+        "source": "Source : NASA POWER"
+      }
+    },
+    "frise": {
+      "titre": "La pluie baisse aux pires moments du calendrier",
+      "source": "Pluie moyenne 2015-2024 comparée à 2005-2014 (GPM IMERG)",
+      "saison1": "1re campagne (mars à juillet)",
+      "saison2": "2e campagne (août à novembre)",
+      "aria": "Les 12 mois de l’année",
+      "baisse": "{pct} % de pluie en moins",
+      "roles": {
+        "semis1": "Démarrage des cultures de 1re campagne",
+        "semis2": "Semis de la 2e campagne",
+        "fin2": "Fin de cycle de la 2e campagne"
+      }
+    },
+    "conclusion": "Moins d’eau au démarrage et en fin de cycle, c’est-à-dire quand les cultures sont les plus fragiles. Il faut repenser quoi semer, et quand."
+  },
+  "commentCaMarche": {
+    "surTitre": "Comment ça marche",
+    "titre": "Trois sources de données, une décision plus sûre",
+    "intro": "Field Shift ne décide pas à la place de l’agriculteur. Il met côte à côte ce que disent le ciel, le sol et ses propres priorités, puis propose des rotations qu’il peut comparer.",
+    "entrees": {
+      "climat": {
+        "titre": "Le climat",
+        "texte": "La pluie mois par mois sur 20 ans, le début de la saison des pluies année par année, et la température.",
+        "badge": "Vérifié par la station IRAD"
+      },
+      "sol": {
+        "titre": "Le sol de la parcelle",
+        "texte": "pH, argile et carbone organique sur les 30 premiers centimètres. L’agriculteur peut aussi saisir sa propre analyse de sol.",
+        "badge": "Analyse de l’agriculteur"
+      },
+      "priorites": {
+        "titre": "Les priorités de l’agriculteur",
+        "texte": "Rendement, sécurité en eau, santé du sol : chacun règle de 1 à 5 ce qui compte le plus pour lui.",
+        "badge": "Son choix, ses curseurs"
+      }
+    },
+    "moteur": {
+      "surTitre": "Le moteur",
+      "titre": "Toutes les rotations possibles, notées une par une",
+      "points": {
+        "0": "Il évalue toutes les rotations possibles sur 2 ans, soit 4 campagnes.",
+        "1": "Pour chaque culture, il vérifie l’eau sur tout le cycle et au démarrage, la température et le pH.",
+        "2": "Il applique les règles de l’IRAD : successions interdites, délais de retour, saisons déconseillées.",
+        "3": "Il donne trois notes sur 100 : rendement, sécurité en eau et santé du sol."
+      }
+    },
+    "resultat": {
+      "surTitre": "Le résultat",
+      "titre": "3 rotations à comparer",
+      "texte": "Les meilleures options selon les priorités choisies, chacune avec ses raisons et les conseils pratiques de l’IRAD.",
+      "aria": "Exemple : les 3 rotations proposées pour la parcelle de l’IRAD Dschang",
+      "option": "Option {n}, note {note} sur 100"
+    },
+    "cta": "Essayer sur la parcelle de l’IRAD"
+  },
+  "validation": {
+    "surTitre": "La preuve",
+    "titre": "Le satellite vérifié au sol",
+    "intro": "Avant de faire confiance aux satellites, nous les avons confrontés à dix ans de relevés de la station météo de l’IRAD à Dschang. Résultat : GPM IMERG colle à la réalité du terrain, NASA POWER non. L’outil utilise donc IMERG pour la pluie.",
+    "photoAlt": "Panneau d’entrée de la station polyvalente de recherche agricole de l’IRAD à Dschang",
+    "photoLegende": "Station de l’IRAD à Dschang, où nous avons récupéré les relevés de pluie (2014-2024).",
+    "stats": {
+      "correlation": "corrélation mois par mois",
+      "biais": "écart sur le total de pluie",
+      "erreur": "erreur moyenne par mois"
+    },
+    "sources": {
+      "imerg": {
+        "nom": "NASA GPM IMERG",
+        "statut": "Retenu",
+        "correlation": "0,79",
+        "biais": "−2 %",
+        "erreur": "59 mm",
+        "verdict": "Il suit les mois secs et les mois pluvieux comme la station, et le total de pluie est presque exact."
+      },
+      "power": {
+        "nom": "NASA POWER",
+        "statut": "Écarté pour la pluie",
+        "correlation": "0,63",
+        "biais": "+32 %",
+        "erreur": "106 mm",
+        "verdict": "Il surestime la pluie d’un tiers. Nous ne l’utilisons que pour la température."
+      }
+    },
+    "graphique": {
+      "titre": "Pluie annuelle : la station contre les satellites",
+      "moyennes": "Moyenne : station 1 978 mm, IMERG 1 928 mm, POWER 2 600 mm",
+      "station": "Station IRAD (mesure au sol)",
+      "imerg": "GPM IMERG",
+      "power": "NASA POWER",
+      "unite": "mm par an",
+      "annee": "Année",
+      "aria": "Graphique en barres de la pluie annuelle de 2014 à 2024 : station IRAD, GPM IMERG et NASA POWER. IMERG reste proche de la station, POWER la dépasse souvent largement.",
+      "note": "Comparaison sur 118 mois. L’année 2018 manque dans les relevés de la station ; 2 mois incohérents ont été écartés."
+    },
+    "saisons": "Saison par saison, IMERG reste à 3 % de la station : 988 mm contre 1 019 mm en 1re campagne, 885 mm contre 910 mm en 2e campagne. Or c’est justement la pluie par campagne que le moteur utilise pour noter les cultures."
+  },
+  "irad": {
+    "surTitre": "Le savoir local",
+    "titre": "Construit avec les chercheurs de l’IRAD Dschang",
+    "intro": "Les satellites disent quand il pleut. Les chercheurs de l’IRAD savent ce que chaque culture supporte et ce qui épuise un sol. Nous sommes allés les voir à la station, et leurs règles sont inscrites directement dans le moteur.",
+    "regle": {
+      "titre": "La règle d’or de la rotation",
+      "texte": "On alterne une plante qui enrichit le sol en azote avec une plante qui en consomme.",
+      "aria": "Alternance recommandée par l’IRAD",
+      "legumineuse": "Légumineuse",
+      "cerealeTubercule": "Céréale ou tubercule"
+    },
+    "normes": {
+      "delai": {
+        "titre": "Délai de retour :",
+        "texte": "au moins 3 ans avant de remettre la même culture, 4 ans pour la pomme de terre et le manioc."
+      },
+      "jachere": {
+        "titre": "Jachère :",
+        "texte": "une saison sur trois, avec une plante de couverture comme le Mucuna ou le Stylosanthes."
+      },
+      "association": {
+        "titre": "Association :",
+        "texte": "maïs + haricot ou maïs + arachide sur la même parcelle, c’est accepté."
+      }
+    },
+    "jamais": {
+      "titre": "Ce que l’outil ne proposera jamais",
+      "texte": "Ces successions sont exclues avant même le calcul des notes.",
+      "maisMais": {
+        "titre": "Maïs après maïs",
+        "consequence": "Sans engrais, des épis vides."
+      },
+      "haricotArachide": {
+        "titre": "Haricot après arachide",
+        "consequence": "Même famille, mêmes maladies."
+      },
+      "maniocManioc": {
+        "titre": "Manioc après manioc",
+        "consequence": "Un sol mort et des cochenilles."
+      },
+      "pdtPdt": {
+        "titre": "Pomme de terre après pomme de terre",
+        "consequence": "Les maladies du sol s’installent."
+      }
+    },
+    "fiche": {
+      "titre": "Les besoins des 5 cultures",
+      "source": "Fiche technique de l’IRAD Dschang, novembre 2026",
+      "culture": "Culture",
+      "colonnes": {
+        "eau": "Besoin en eau",
+        "ph": "pH idéal",
+        "campagne": "Quand semer"
+      },
+      "cultures": {
+        "haricot": {
+          "eau": "400 à 600 mm par cycle",
+          "ph": "5,5 à 6,5",
+          "campagne": "2e campagne (la 1re est trop pluvieuse : pourriture)"
+        },
+        "mais": {
+          "eau": "500 à 800 mm par cycle",
+          "ph": "5,5 à 6,5",
+          "campagne": "Les deux campagnes (15 mars ou 15 août)"
+        },
+        "manioc": {
+          "eau": "1 000 à 1 500 mm par an",
+          "ph": "5,5 à 6,5 (supporte 4,5)",
+          "campagne": "1re campagne (15 mars), occupe toute l’année"
+        },
+        "arachide": {
+          "eau": "400 à 600 mm par cycle",
+          "ph": "5,5 à 6,5",
+          "campagne": "Les deux campagnes ; trop d’eau en fin de cycle fait pourrir les gousses"
+        },
+        "pomme_de_terre": {
+          "eau": "500 à 700 mm par cycle",
+          "ph": "5,5 à 6,0",
+          "campagne": "1re campagne (en 2e, la récolte sous la pluie fait pourrir)"
+        }
+      }
+    },
+    "exemple": {
+      "surTitre": "Un exemple réel",
+      "titre": "La parcelle de l’IRAD : un sol trop acide",
+      "texte": "Sur la parcelle de la station, le sol a un pH de 5,3, sous l’optimum des cinq cultures. L’outil le détecte, propose quand même la rotation la plus adaptée (maïs, haricot, pomme de terre, arachide : 89 sur 100), et ajoute le conseil de l’IRAD pour corriger le sol.",
+      "photoAlt": "Ouvriers agricoles dans les rangs de jeunes plants de maïs",
+      "conseilTitre": "Conseil affiché par l’outil",
+      "conseil": "Apporter 5 à 10 tonnes par hectare de compost ou de fumier, et de la cendre, pour remonter le pH vers 5,5 à 6,5. Pour l’arachide, la cendre apporte aussi le calcium dont elle a besoin.",
+      "cta": "Voir l’analyse complète"
+    }
+  },
+  "pourQui": {
+    "surTitre": "Pour qui",
+    "titre": "Un outil pour ceux qui décident au champ, et ceux qui les conseillent",
+    "publics": {
+      "agriculteurs": {
+        "titre": "Les agriculteurs",
+        "texte": "Comparer quoi semer sur leur parcelle, selon ce qui compte pour eux : rendement, eau ou sol."
+      },
+      "techniciens": {
+        "titre": "Les techniciens agricoles",
+        "texte": "Appuyer leurs conseils sur des données de pluie vérifiées et sur les règles de l’IRAD, parcelle par parcelle."
+      },
+      "cooperatives": {
+        "titre": "Les coopératives et ONG",
+        "texte": "Planifier les semences et les campagnes pour leurs membres en tenant compte du climat qui change."
+      },
+      "chercheurs": {
+        "titre": "Les chercheurs",
+        "texte": "Tester des scénarios de rotation et confronter les données satellite aux mesures de terrain."
+      }
+    }
+  },
+  "limites": {
+    "surTitre": "Soyons honnêtes",
+    "titre": "Ce que l’outil n’est pas",
+    "points": {
+      "aide": {
+        "titre": "Une aide à la décision, pas un ordre.",
+        "texte": "L’agriculteur compare et choisit. Les propositions sont à valider avec un technicien agricole ou l’IRAD."
+      },
+      "notes": {
+        "titre": "Des notes, pas des tonnes.",
+        "texte": "Les notes mesurent l’adaptation des cultures au climat et au sol, pas un rendement en kilos."
+      },
+      "sol": {
+        "titre": "Un sol estimé.",
+        "texte": "SoilGrids donne une estimation par carrés de 250 m. Une analyse de sol en laboratoire reste plus fiable, et l’outil permet de la saisir."
+      },
+      "zone": {
+        "titre": "Une zone pilote.",
+        "texte": "Les données sont prêtes pour Dschang et les règles viennent de l’IRAD Dschang. D’autres régions demanderont leurs propres règles locales."
+      }
+    },
+    "suite": {
+      "surTitre": "La suite",
+      "titre": "Où nous allons ensuite",
+      "etapes": {
+        "zones": {
+          "titre": "Plus de zones",
+          "texte": "Santchou et la plaine des Mbo, puis d’autres bassins agricoles du Cameroun."
+        },
+        "smap": {
+          "titre": "L’humidité du sol",
+          "texte": "Ajouter les mesures du satellite NASA SMAP pour suivre l’eau réellement disponible dans le sol."
+        },
+        "prevision": {
+          "titre": "Prévoir le début des pluies",
+          "texte": "Un modèle d’apprentissage automatique pour annoncer la date de démarrage de la saison avant de semer."
+        },
+        "terrain": {
+          "titre": "Valider au champ",
+          "texte": "Tester les rotations proposées sur des parcelles de l’IRAD et comparer les récoltes."
+        }
+      }
+    }
+  },
+  "final": {
+    "surTitre": "Essayez",
+    "titre": "Quelle rotation pour votre parcelle ?",
+    "texte": "Réglez vos priorités, saisissez votre analyse de sol si vous en avez une, et comparez trois rotations adaptées au climat d’aujourd’hui.",
+    "equipe": {
+      "surTitre": "L’équipe",
+      "evenement": "NASA Space Apps Challenge 2026 · Yaoundé · Défi « Field Shift »",
+      "roleDev": "Développement et intelligence artificielle",
+      "merci": "Merci aux chercheurs de la station IRAD de Dschang pour leur temps, leurs données et leurs conseils."
+    },
+    "footer": {
+      "avertissement": "Outil d’aide à la décision. Les propositions ne remplacent pas l’avis d’un technicien agricole.",
+      "donnees": "Données :"
+    }
+  },
+  "outil": {
+    "niveauxNote": {
+      "excellent": "Excellent",
+      "tresBon": "Très bon",
+      "bon": "Bon",
+      "moyen": "Moyen",
+      "faible": "Faible"
+    },
+    "metaTitre": "Field Shift : comparer les rotations de ma parcelle",
+    "surTitre": "L’outil",
+    "titre": "Comparer des rotations pour ma parcelle",
+    "intro": "Réglez vos priorités à gauche : l’outil évalue toutes les rotations possibles sur 2 ans et vous propose les trois plus adaptées au climat et au sol de votre parcelle.",
+    "aucuneZone": "Aucune zone n’a encore de données prêtes. Lancez les scripts de préparation des données.",
+    "annee1": "An 1",
+    "annee2": "An 2",
+    "saisons": {
+      "saison_1": "1re campagne (mars à juillet)",
+      "saison_2": "2e campagne (août à novembre)"
+    },
+    "saisonsCourt": {
+      "saison_1": "1re campagne",
+      "saison_2": "2e campagne",
+      "seche": "Saison sèche",
+      "secheCourt": "Sèche"
+    },
+    "importance": {
+      "1": "Peu important",
+      "2": "Secondaire",
+      "3": "Important",
+      "4": "Très important",
+      "5": "Essentiel"
+    },
+    "criteres": {
+      "rendement": {
+        "label": "Rendement",
+        "aide": "Des cultures bien adaptées au climat et au sol"
+      },
+      "eau": {
+        "label": "Sécurité en eau",
+        "aide": "Peu de risque de manquer d’eau, surtout après le semis"
+      },
+      "sol": {
+        "label": "Santé du sol",
+        "aide": "Azote, couverture du sol, moins d’érosion"
+      }
+    },
+    "panneau": {
+      "aria": "Votre parcelle et vos choix",
+      "parcelle": "Votre parcelle",
+      "carte": "Carte de la parcelle : {nom}",
+      "precedent": "Culture actuellement en place",
+      "precedentAide": "L’outil évite de la remettre trop tôt et choisit ce qui peut la suivre.",
+      "parcelleLibre": "Parcelle libre",
+      "priorites": "Vos priorités",
+      "analyseSol": "J’ai une analyse de sol",
+      "analyseSolAide": "Sinon, l’outil utilise l’estimation SoilGrids",
+      "estimation": "pH {ph}, argile {argile} %",
+      "ph": "pH (eau)",
+      "argile": "Argile (%)",
+      "comparer": "Comparer les rotations"
+    },
+    "rotations": {
+      "titre": "Trois rotations à comparer",
+      "evaluees": "{n} rotations évaluées.",
+      "solUtilise": "Sol utilisé : pH {ph}.",
+      "bande": "Cultures saison par saison",
+      "solNu": "Saison sèche : sol nu",
+      "option": "Option {n}, note {note} sur 100",
+      "optionCourt": "Option {n}",
+      "meilleure": "Meilleur choix",
+      "voir": "Voir les raisons ({n})",
+      "masquer": "Masquer les raisons",
+      "pointFort": "Point fort :",
+      "vigilance": "Point de vigilance :",
+      "aucune": "Aucun point de vigilance.",
+      "conseils": "Conseils de l’IRAD pour cette rotation ({n})",
+      "legende": "Les notes mesurent l’adaptation des cultures au climat et au sol de la parcelle, pas un rendement en tonnes. Les bandes hachurées montrent la saison sèche, quand le sol reste nu."
+    },
+    "normes": {
+      "titre": "Les règles de l’IRAD Dschang",
+      "intro": "Toutes les rotations proposées respectent ces règles : pas de maïs après maïs, pas de haricot après arachide, au moins 3 ans avant de revenir à la même culture (4 ans pour la pomme de terre et le manioc).",
+      "libelles": {
+        "jachere": "Jachère",
+        "association": "Association",
+        "amendement": "Amendement du sol",
+        "travail_du_sol": "Travail du sol",
+        "varietes": "Variétés"
+      },
+      "erreurs": "Erreurs à éviter"
+    },
+    "climat": {
+      "titre": "Le climat de votre parcelle",
+      "intro": "Moyennes des années {debut} à {fin}, utilisées par l’outil pour noter les rotations.",
+      "saison": "de pluie en moyenne, entre {min} et {max} mm selon les années. Température moyenne {temp} °C.",
+      "debutTitre": "Le début des pluies change d’une année à l’autre",
+      "debutTexte": "Date de démarrage de la saison. NASA POWER est biaisé ici : l’outil s’appuie sur GPM IMERG.",
+      "moisTitre": "Pluie mois par mois, deux décennies",
+      "moisTexte": "Moyennes GPM IMERG, en mm par mois."
+    },
+    "graphiques": {
+      "powerBiaise": "NASA POWER (biaisé)",
+      "debutAria": "Date de début de la saison des pluies, année par année",
+      "moisAria": "Pluie moyenne par mois, comparaison de deux décennies",
+      "ecart": "Écart",
+      "mmMois": "mm par mois"
+    },
+    "validation": {
+      "titre": "Le satellite vérifié au sol",
+      "intro": "Pluie mesurée à la station météo de l’IRAD Dschang ({periode}), comparée mois par mois aux données satellite. Une corrélation de 1 signifie que les deux séries montent et descendent ensemble.",
+      "imerg": "GPM IMERG (utilisé par l’outil)",
+      "power": "NASA POWER (pluie écartée)",
+      "detail": "corrélation, écart {biais}, sur {mois} mois",
+      "annuelle": "Pluie annuelle moyenne",
+      "annuelleDetail": "à la station, contre {imerg} mm pour IMERG",
+      "ecartes": "{pluie} mois de pluie et {temp} mois de température de la station ont été écartés (valeurs incohérentes ou recopiées)."
+    },
+    "sol": {
+      "titre": "Le sol de votre parcelle",
+      "intro": "Estimation ISRIC SoilGrids (carrés de 250 m), sur les 30 premiers centimètres. Une analyse en laboratoire reste plus fiable.",
+      "carbone": "Carbone organique",
+      "argile": "Argile",
+      "cec": "Capacité d’échange",
+      "ph": {
+        "tresAcide": "très acide",
+        "acide": "acide",
+        "legerementAcide": "légèrement acide",
+        "neutre": "neutre",
+        "basique": "basique"
+      },
+      "niveaux": {
+        "faible": "niveau faible",
+        "moyen": "niveau moyen",
+        "eleve": "niveau élevé"
+      },
+      "textures": {
+        "sable": "Sable",
+        "sable_limoneux": "Sable limoneux",
+        "limon_sableux": "Limon sableux",
+        "limon": "Limon",
+        "limon_fin": "Limon fin",
+        "limon_tres_fin": "Limon très fin",
+        "limon_argilo_sableux": "Limon argilo-sableux",
+        "limon_argileux": "Limon argileux",
+        "limon_argilo_fin": "Limon argilo-fin",
+        "argile_sableuse": "Argile sableuse",
+        "argile_limoneuse": "Argile limoneuse",
+        "argile": "Argile"
+      }
+    }
+  }
+}

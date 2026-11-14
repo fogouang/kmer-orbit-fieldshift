@@ -1,0 +1,636 @@
+{
+  "_meta": {
+    "description": "Base des cultures de la zone pilote (hautes terres de l'Ouest, Dschang) pour le moteur de rotation Field Shift",
+    "version": "0.3",
+    "statut": "Besoins en eau, pH, délais de retour et successions validés par l'IRAD Dschang (entretiens du 12/11/2026 et fiche technique transmise ensuite). Seules les températures restent des références FAO à confirmer.",
+    "sources": [
+      "IRAD Dschang, entretiens avec les chercheurs de la station (12/11/2026)",
+      "IRAD Dschang, fiche besoins en eau, pH et rotation des cultures (12/11/2026)",
+      "IRAD Dschang, donnees meteorologiques de la station 2009-2024 (data/raw/irad_dschang_meteo.csv)",
+      "FAO ECOCROP (plages de temperature)"
+    ],
+    "saisons": {
+      "saison_1": "Première campagne : semis à partir du 15 mars (mi-mars à juillet)",
+      "saison_2": "Deuxième campagne : semis à partir du 15 août (mi-août à fin décembre ou janvier) ; mi-juillet pour la pomme de terre"
+    },
+    "echelles": {
+      "niveau": "1 = faible, 2 = moyen, 3 = élevé",
+      "tolerance": "1 = sensible, 2 = moyenne, 3 = tolerante",
+      "ph_sol": "optimum = plage ideale ; tolère = la culture pousse maïs le rendement baisse ; hors plage toleree = defavorable"
+    }
+  },
+  "cultures": [
+    {
+      "id": "mais",
+      "nom": "Maïs",
+      "nom_scientifique": "Zea mays",
+      "famille": "Poaceae",
+      "type": "cereale",
+      "cycle_jours": {
+        "min": 115,
+        "max": 120
+      },
+      "saisons_possibles": ["saison_1", "saison_2"],
+      "dates_semis": {
+        "saison_1": "15 mars, récolte en juillet",
+        "saison_2": "15 août, récolte fin décembre ou janvier"
+      },
+      "besoin_eau_cycle_mm": {
+        "min": 500,
+        "max": 800
+      },
+      "temperature_c": {
+        "optimum_min": 18,
+        "optimum_max": 32,
+        "absolu_min": 10,
+        "absolu_max": 40
+      },
+      "ph_sol": {
+        "optimum_min": 5.5,
+        "optimum_max": 6.5,
+        "tolere_min": 5.0,
+        "tolere_max": 7.5
+      },
+      "tolerance_secheresse": 2,
+      "tolerance_exces_eau": 1,
+      "effet_sol": {
+        "fixe_azote": false,
+        "demande_azote": 3,
+        "couverture_sol": 2,
+        "enracinement": "profond",
+        "risque_erosion": 2
+      },
+      "sensibilites": [
+        "stress hydrique à la floraison et au remplissage du grain",
+        "toxicité aluminique sous pH 5,0",
+        "foreur de tige",
+        "chenille legionnaire"
+      ],
+      "delai_retour_ans": 3,
+      "notes": "Gros consommateur d'azote : profite fortement d'une légumineuse la saison précédente. Maïs après maïs sans engrais : épis vides (IRAD). Les tiges peuvent être valorisées après la récolte.",
+      "source": {
+        "irad_dschang": [
+          "besoin_eau_cycle_mm",
+          "cycle_jours",
+          "dates_semis",
+          "delai_retour_ans",
+          "periodes_critiques",
+          "ph_sol",
+          "pluviometrie_ideale_mm",
+          "precedents_interdits",
+          "saisons_possibles",
+          "suivants_conseilles"
+        ],
+        "fao_a_confirmer": ["temperature_c"]
+      },
+      "pluviometrie_ideale_mm": {
+        "min": 600,
+        "max": 1200
+      },
+      "ph_note": "Toxicité aluminique sous pH 5,0 : chauler.",
+      "seuil_ph_critique": {
+        "valeur": 5.0,
+        "effet": "toxicité aluminique sous pH 5,0 : chaulage nécessaire"
+      },
+      "periodes_critiques": [
+        {
+          "stade": "floraison",
+          "risque": "stress hydrique critique"
+        },
+        {
+          "stade": "remplissage du grain",
+          "risque": "stress hydrique critique, épis mal remplis"
+        }
+      ],
+      "precedents_interdits": ["mais"],
+      "suivants_conseilles": ["haricot", "arachide", "manioc"]
+    },
+    {
+      "id": "haricot",
+      "nom": "Haricot commun",
+      "nom_scientifique": "Phaseolus vulgaris",
+      "famille": "Fabaceae",
+      "type": "legumineuse",
+      "cycle_jours": {
+        "min": 90,
+        "max": 90
+      },
+      "saisons_possibles": ["saison_1", "saison_2"],
+      "saison_preferee": "saison_2",
+      "saisons_deconseillees": {
+        "saison_1": "Première campagne trop pluvieuse : beaucoup de pourriture (IRAD)"
+      },
+      "dates_semis": {
+        "saison_2": "15 août, la date la plus fréquente"
+      },
+      "besoin_eau_cycle_mm": {
+        "min": 400,
+        "max": 600
+      },
+      "temperature_c": {
+        "optimum_min": 16,
+        "optimum_max": 25,
+        "absolu_min": 10,
+        "absolu_max": 32
+      },
+      "ph_sol": {
+        "optimum_min": 5.5,
+        "optimum_max": 6.5,
+        "tolere_min": 5.0,
+        "tolere_max": 7.5
+      },
+      "tolerance_secheresse": 1,
+      "tolerance_exces_eau": 1,
+      "effet_sol": {
+        "fixe_azote": true,
+        "demande_azote": 1,
+        "couverture_sol": 2,
+        "enracinement": "superficiel",
+        "risque_erosion": 2
+      },
+      "sensibilites": [
+        "pourriture en excès d'eau, surtout en première campagne",
+        "manque d'eau à la floraison",
+        "anthracnose",
+        "nodulation inefficace sous pH 5,0"
+      ],
+      "delai_retour_ans": 3,
+      "notes": "Cycle de 90 jours. Semis surtout en deuxième campagne, la première étant trop pluvieuse (IRAD). Jamais après l'arachide (même famille). Haricot après haricot : rendement divisé par deux (IRAD).",
+      "source": {
+        "irad_dschang": [
+          "besoin_eau_cycle_mm",
+          "cycle_jours",
+          "dates_semis",
+          "delai_retour_ans",
+          "periodes_critiques",
+          "ph_sol",
+          "pluviometrie_ideale_mm",
+          "precedents_interdits",
+          "saison_preferee",
+          "saisons_deconseillees",
+          "suivants_conseilles"
+        ],
+        "fao_a_confirmer": ["temperature_c"]
+      },
+      "pluviometrie_ideale_mm": {
+        "min": 500,
+        "max": 800
+      },
+      "ph_note": "Nodulation inefficace sous pH 5,0.",
+      "seuil_ph_critique": {
+        "valeur": 5.0,
+        "effet": "nodulation inefficace sous pH 5,0 : le haricot ne fixe presque plus d'azote"
+      },
+      "periodes_critiques": [
+        {
+          "stade": "floraison",
+          "risque": "sensible au manque d'eau"
+        }
+      ],
+      "precedents_interdits": ["haricot", "arachide"],
+      "suivants_conseilles": ["mais", "pomme_de_terre", "manioc"]
+    },
+    {
+      "id": "arachide",
+      "nom": "Arachide",
+      "nom_scientifique": "Arachis hypogaea",
+      "famille": "Fabaceae",
+      "type": "legumineuse",
+      "cycle_jours": {
+        "min": 90,
+        "max": 140
+      },
+      "saisons_possibles": ["saison_1", "saison_2"],
+      "besoin_eau_cycle_mm": {
+        "min": 400,
+        "max": 600
+      },
+      "temperature_c": {
+        "optimum_min": 22,
+        "optimum_max": 30,
+        "absolu_min": 15,
+        "absolu_max": 40
+      },
+      "ph_sol": {
+        "optimum_min": 5.5,
+        "optimum_max": 6.5,
+        "tolere_min": 5.0,
+        "tolere_max": 7.5
+      },
+      "tolerance_secheresse": 2,
+      "tolerance_exces_eau": 1,
+      "effet_sol": {
+        "fixe_azote": true,
+        "demande_azote": 1,
+        "couverture_sol": 3,
+        "enracinement": "moyen",
+        "risque_erosion": 1
+      },
+      "sensibilites": [
+        "pourriture des gousses si trop d'eau en fin de cycle",
+        "manque de calcium en sol acide",
+        "sols lourds et mal drainés",
+        "cercosporiose en humidité élevée"
+      ],
+      "delai_retour_ans": 3,
+      "notes": "Bonne couverture du sol, limite l'érosion. Préfère les sols légers et bien drainés.",
+      "source": {
+        "irad_dschang": [
+          "besoin_eau_cycle_mm",
+          "delai_retour_ans",
+          "periodes_critiques",
+          "ph_sol",
+          "pluviometrie_ideale_mm",
+          "precedents_interdits",
+          "suivants_conseilles"
+        ],
+        "fao_a_confirmer": ["cycle_jours", "saisons_possibles", "temperature_c"]
+      },
+      "pluviometrie_ideale_mm": {
+        "min": 500,
+        "max": 1000
+      },
+      "ph_note": "A besoin de calcium : apporter de la cendre en sol acide.",
+      "periodes_critiques": [
+        {
+          "stade": "jusqu'au 60e jour",
+          "risque": "besoin d'une eau régulière"
+        },
+        {
+          "stade": "fin de cycle",
+          "risque": "trop d'eau fait pourrir les gousses"
+        }
+      ],
+      "precedents_interdits": [],
+      "suivants_conseilles": ["mais", "pomme_de_terre", "manioc"]
+    },
+    {
+      "id": "manioc",
+      "nom": "Manioc",
+      "nom_scientifique": "Manihot esculenta",
+      "famille": "Euphorbiaceae",
+      "type": "tubercule",
+      "cycle_jours": {
+        "min": 180,
+        "max": 270
+      },
+      "saisons_possibles": ["saison_1"],
+      "dates_semis": {
+        "saison_1": "15 mars, pour les variétés à 6 mois comme à 9 mois"
+      },
+      "besoin_eau_cycle_mm": {
+        "min": 1000,
+        "max": 1500
+      },
+      "temperature_c": {
+        "optimum_min": 20,
+        "optimum_max": 29,
+        "absolu_min": 12,
+        "absolu_max": 40
+      },
+      "ph_sol": {
+        "optimum_min": 5.5,
+        "optimum_max": 6.5,
+        "tolere_min": 4.5,
+        "tolere_max": 8.0
+      },
+      "tolerance_secheresse": 3,
+      "tolerance_exces_eau": 1,
+      "effet_sol": {
+        "fixe_azote": false,
+        "demande_azote": 2,
+        "couverture_sol": 2,
+        "enracinement": "profond",
+        "risque_erosion": 3
+      },
+      "sensibilites": [
+        "épuise la potasse du sol",
+        "sol nu et érosion pendant les premiers mois",
+        "mosaïque du manioc",
+        "cochenilles si manioc après manioc"
+      ],
+      "delai_retour_ans": 4,
+      "notes": "Cycle de 6 ou 9 mois selon la variété, plantation le 15 mars (IRAD). Occupe la parcelle sur les deux campagnes de l'année. Tolère 3 à 4 mois secs. Épuise la potasse : après le manioc, une légumineuse (haricot ou arachide) puis le maïs. Manioc après manioc : sol mort et cochenilles (IRAD).",
+      "source": {
+        "irad_dschang": [
+          "besoin_eau_cycle_mm",
+          "cycle_jours",
+          "dates_semis",
+          "delai_retour_ans",
+          "periodes_critiques",
+          "ph_sol",
+          "pluviometrie_ideale_mm",
+          "precedents_interdits",
+          "saisons_possibles",
+          "suivants_conseilles"
+        ],
+        "fao_a_confirmer": ["temperature_c"]
+      },
+      "besoin_eau_unite": "mm par an",
+      "pluviometrie_ideale_mm": {
+        "min": 1000,
+        "max": 2000
+      },
+      "ph_note": "Pousse jusqu'à pH 4,5 ; tolère 3 à 4 mois secs.",
+      "periodes_critiques": [],
+      "precedents_interdits": ["manioc"],
+      "suivants_conseilles": ["haricot", "arachide"]
+    },
+    {
+      "id": "pomme_de_terre",
+      "nom": "Pomme de terre",
+      "nom_scientifique": "Solanum tuberosum",
+      "famille": "Solanaceae",
+      "type": "tubercule",
+      "cycle_jours": {
+        "min": 90,
+        "max": 120
+      },
+      "saisons_possibles": ["saison_1", "saison_2"],
+      "saison_preferee": "saison_1",
+      "saisons_deconseillees": {
+        "saison_2": "Les pommes de deuxième campagne pourrissent plus vite car on récolte sous la pluie (IRAD)"
+      },
+      "dates_semis": {
+        "saison_1": "mi-mars (vers le 15), la meilleure période car il y a encore du soleil à la récolte",
+        "saison_2": "mi-juillet"
+      },
+      "besoin_eau_cycle_mm": {
+        "min": 500,
+        "max": 700
+      },
+      "temperature_c": {
+        "optimum_min": 15,
+        "optimum_max": 20,
+        "absolu_min": 7,
+        "absolu_max": 30
+      },
+      "ph_sol": {
+        "optimum_min": 5.5,
+        "optimum_max": 6.5,
+        "tolere_min": 5.0,
+        "tolere_max": 7.0,
+        "prefere_min": 5.5,
+        "prefere_max": 6.0
+      },
+      "tolerance_secheresse": 1,
+      "tolerance_exces_eau": 1,
+      "effet_sol": {
+        "fixe_azote": false,
+        "demande_azote": 3,
+        "couverture_sol": 2,
+        "enracinement": "superficiel",
+        "risque_erosion": 3
+      },
+      "sensibilites": [
+        "pourriture si récolte sous la pluie",
+        "mildiou en humidité élevée",
+        "flétrissement bactérien"
+      ],
+      "delai_retour_ans": 4,
+      "notes": "120 jours pour la pomme de terre de consommation, 90 jours pour la semence : on arrête la croissance car le tubercule de semence ne doit pas être gros. Plus le diamètre de la semence est petit, plus elle produit. Besoin en eau de 400 à 600 mm sur l'ensemble du cycle (IRAD). Maladies du sol : attendre 3 à 4 ans avant d'y revenir (IRAD).",
+      "source": {
+        "irad_dschang": [
+          "besoin_eau_cycle_mm",
+          "cycle_jours",
+          "dates_semis",
+          "delai_retour_ans",
+          "periodes_critiques",
+          "ph_sol",
+          "pluviometrie_ideale_mm",
+          "precedents_interdits",
+          "saison_preferee",
+          "saisons_deconseillees",
+          "suivants_conseilles"
+        ],
+        "fao_a_confirmer": ["temperature_c"]
+      },
+      "pluviometrie_ideale_mm": {
+        "min": 500,
+        "max": 750
+      },
+      "ph_note": "Préfère un pH de 5,5 à 6,0.",
+      "periodes_critiques": [
+        {
+          "stade": "tubérisation (40e au 70e jour)",
+          "risque": "besoin d'une eau régulière"
+        }
+      ],
+      "precedents_interdits": ["pomme_de_terre"],
+      "suivants_conseilles": ["haricot", "arachide", "mais"]
+    }
+  ],
+  "cultures_perennes": [
+    {
+      "id": "banane_plantain",
+      "nom": "Banane plantain",
+      "nom_scientifique": "Musa paradisiaca",
+      "type": "semi_perenne",
+      "cycle_mois": {
+        "ouest": 18,
+        "littoral": 15
+      },
+      "ph_sol": {
+        "optimum_min": 5.0,
+        "optimum_max": 6.5
+      },
+      "besoin_eau_mm_par_an": 1500,
+      "notes": "Cycle de 18 mois à l'Ouest, 15 mois dans le Littoral (IRAD). Occupe la parcelle sur plus d'une année : n'entre pas dans les rotations de 2 ans du moteur pour l'instant.",
+      "source": {
+        "irad_dschang": ["cycle_mois", "ph_sol", "besoin_eau_mm_par_an"]
+      }
+    },
+    {
+      "id": "avocatier",
+      "nom": "Avocatier",
+      "nom_scientifique": "Persea americana",
+      "type": "arbre",
+      "entree_production_ans": {
+        "greffe": 4,
+        "non_greffe": 6
+      },
+      "duree_vie_ans": 40,
+      "ph_sol": {
+        "optimum": 6.5
+      },
+      "besoin_eau_mm_par_an": 1800,
+      "notes": "Entre en production à 4 ans s'il est greffé, 6 ans sinon ; vit environ 40 ans (IRAD).",
+      "source": {
+        "irad_dschang": [
+          "entree_production_ans",
+          "duree_vie_ans",
+          "ph_sol",
+          "besoin_eau_mm_par_an"
+        ]
+      }
+    },
+    {
+      "id": "safoutier",
+      "nom": "Safoutier",
+      "nom_scientifique": "Dacryodes edulis",
+      "type": "arbre",
+      "entree_production_ans": {
+        "moyenne": 6
+      },
+      "duree_vie_ans": 45,
+      "ph_sol": {
+        "tolerance_min": 4.5,
+        "limite_max": 7.0
+      },
+      "besoin_eau_mm_par_an": 1000,
+      "notes": "Entre en production vers 6 ans, vit environ 45 ans. Tolère un pH jusqu'à 4,5 mais ne produit plus rien à 7 (IRAD).",
+      "source": {
+        "irad_dschang": [
+          "entree_production_ans",
+          "duree_vie_ans",
+          "ph_sol",
+          "besoin_eau_mm_par_an"
+        ]
+      }
+    }
+  ],
+  "regles_rotation": [
+    {
+      "id": "alternance_irad",
+      "type": "principe",
+      "description": "Légumineuse -> céréale ou tubercule -> légumineuse -> céréale ou tubercule (IRAD)",
+      "source": "IRAD Dschang"
+    },
+    {
+      "id": "succession_interdite",
+      "type": "interdit",
+      "description": "Maïs après maïs, haricot après arachide, manioc après manioc, pomme de terre après pomme de terre (champ precedents_interdits)",
+      "source": "IRAD Dschang"
+    },
+    {
+      "id": "delai_retour",
+      "type": "interdit",
+      "description": "Au moins 3 ans avant de revenir à la même culture, 4 ans pour la pomme de terre et le manioc (champ delai_retour_ans). Sur l'horizon de 2 ans du moteur, chaque culture apparaît donc une seule fois.",
+      "source": "IRAD Dschang"
+    },
+    {
+      "id": "succession_conseillee",
+      "type": "bonus",
+      "description": "Succession citée comme bonne par l'IRAD (champ suivants_conseilles)",
+      "effet_score": 5,
+      "source": "IRAD Dschang"
+    },
+    {
+      "id": "legumineuse_avant_gourmand",
+      "type": "bonus",
+      "description": "Une légumineuse avant une culture gourmande en azote (maïs, pomme de terre) enrichit le sol ; effet réduit en sol trop acide",
+      "effet_score": 10
+    },
+    {
+      "id": "meme_famille_consecutive",
+      "type": "penalite",
+      "description": "Deux cultures de la même famille à la suite favorisent maladies et ravageurs",
+      "effet_score": -15
+    },
+    {
+      "id": "deux_gourmands_a_la_suite",
+      "type": "penalite",
+      "description": "Deux cultures gourmandes en azote à la suite épuisent le sol",
+      "effet_score": -10
+    },
+    {
+      "id": "erosion",
+      "type": "penalite",
+      "description": "Culture à fort risque d'érosion : -10 pendant la saison la plus pluvieuse, -5 sinon",
+      "effet_score": -10
+    },
+    {
+      "id": "saison_deconseillee",
+      "type": "penalite",
+      "description": "Culture placee dans une saison déconseillée par l'IRAD (haricot en première campagne, pomme de terre en deuxième campagne : pourriture). Le potentiel de rendement de la culture est réduit de 40 %.",
+      "source": "IRAD Dschang"
+    }
+  ],
+  "notes_irad": [
+    "Première campagne : semis mi-mars (15 mars). Deuxieme campagne : semis mi-août (15 août), mi-juillet pour la pomme de terre.",
+    "Rotation : on passe d'un tubercule à une légumineuse, ou d'une céréale à une légumineuse. Les tiges de maïs peuvent être valorisées.",
+    "Pomme de terre : la meilleure période est la première campagne (soleil à la récolte) ; en deuxième campagne, la récolte sous la pluie fait pourrir les tubercules.",
+    "Haricot : la meilleure période est la deuxième campagne ; la première est trop pluvieuse et provoque de la pourriture.",
+    "Pomme de terre : plus le diamètre de la semence est petit, plus elle produit.",
+    "pH : l'optimum est de 5,5 à 6,5 pour les cinq cultures annuelles ; en dessous, chauler (cendre) et apporter de la matière organique.",
+    "Manioc : épuise la potasse ; après le manioc, haricot ou arachide puis maïs."
+  ],
+  "normes_irad": {
+    "jachere": "Laisser une saison de jachère sur trois, avec une plante de couverture (Mucuna ou Stylosanthes).",
+    "association": "L'association maïs + haricot ou maïs + arachide est acceptable.",
+    "amendement": "Apporter 5 à 10 t/ha de compost ou de fumier, et de la cendre pour remonter le pH vers 5,5-6,5.",
+    "travail_du_sol": "Travail du sol léger.",
+    "varietes": "Alterner les variétés.",
+    "erreurs_a_eviter": [
+      "Haricot après haricot : rendement divisé par deux.",
+      "Manioc après manioc : sol mort et cochenilles.",
+      "Maïs après maïs sans engrais : épis vides."
+    ],
+    "exemple_rotation_4_ans": "Exemple de rotation sur 4 ans et 4 parcelles fourni par l'IRAD (tableau à recopier ici)."
+  },
+  "traductions": {
+    "en": {
+      "cultures": {
+        "mais": {
+          "nom": "Maize",
+          "seuil_ph_critique": "aluminium toxicity below pH 5.0: liming needed",
+          "periodes_critiques": [
+            { "stade": "flowering", "risque": "critical water stress" },
+            {
+              "stade": "grain filling",
+              "risque": "critical water stress, poorly filled cobs"
+            }
+          ]
+        },
+        "haricot": {
+          "nom": "Beans",
+          "saisons_deconseillees": {
+            "saison_1": "the 1st season is too wet: a lot of rot (IRAD)"
+          },
+          "seuil_ph_critique": "nodulation fails below pH 5.0: the bean barely fixes any nitrogen",
+          "periodes_critiques": [
+            { "stade": "flowering", "risque": "sensitive to water shortage" }
+          ]
+        },
+        "arachide": {
+          "nom": "Groundnut",
+          "periodes_critiques": [
+            { "stade": "up to day 60", "risque": "needs regular water" },
+            {
+              "stade": "end of cycle",
+              "risque": "too much water rots the pods"
+            }
+          ]
+        },
+        "manioc": {
+          "nom": "Cassava"
+        },
+        "pomme_de_terre": {
+          "nom": "Potato",
+          "saisons_deconseillees": {
+            "saison_2": "2nd-season potatoes rot faster because they are harvested in the rain (IRAD)"
+          },
+          "periodes_critiques": [
+            {
+              "stade": "tuber formation (day 40 to 70)",
+              "risque": "needs regular water"
+            }
+          ]
+        }
+      },
+      "normes_irad": {
+        "jachere": "Leave one season in three as fallow, with a cover crop (Mucuna or Stylosanthes).",
+        "association": "Intercropping maize + beans or maize + groundnut is acceptable.",
+        "amendement": "Apply 5 to 10 t/ha of compost or manure, plus wood ash, to raise the pH towards 5.5-6.5.",
+        "travail_du_sol": "Light tillage.",
+        "varietes": "Rotate varieties.",
+        "erreurs_a_eviter": [
+          "Beans after beans: yield cut in half.",
+          "Cassava after cassava: dead soil and mealybugs.",
+          "Maize after maize without fertiliser: empty cobs."
+        ],
+        "exemple_rotation_4_ans": "4-year, 4-plot rotation example provided by IRAD (table to be added here)."
+      }
+    }
+  }
+}

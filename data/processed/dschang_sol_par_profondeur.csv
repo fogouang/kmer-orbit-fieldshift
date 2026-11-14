@@ -1,0 +1,25 @@
+propriete,nom,unite,profondeur,moyenne,q05,q95
+bdod,Densite apparente,kg/dm3,0-5cm,1.08,0.61,1.49
+bdod,Densite apparente,kg/dm3,5-15cm,1.09,0.61,1.48
+bdod,Densite apparente,kg/dm3,15-30cm,1.11,0.61,1.55
+cec,Capacite d'echange cationique,cmol(c)/kg,0-5cm,15.7,2.3,54.4
+cec,Capacite d'echange cationique,cmol(c)/kg,5-15cm,14.0,1.9,54.4
+cec,Capacite d'echange cationique,cmol(c)/kg,15-30cm,13.5,1.8,54.4
+clay,Argile,%,0-5cm,31.2,6.6,67.4
+clay,Argile,%,5-15cm,29.7,8.0,60.0
+clay,Argile,%,15-30cm,34.3,6.8,68.3
+nitrogen,Azote total,g/kg,0-5cm,2.89,0.39,6.0
+nitrogen,Azote total,g/kg,5-15cm,2.59,0.29,7.0
+nitrogen,Azote total,g/kg,15-30cm,4.11,0.23,31.4
+phh2o,pH (eau),,0-5cm,5.3,4.4,6.4
+phh2o,pH (eau),,5-15cm,5.3,4.3,6.2
+phh2o,pH (eau),,15-30cm,5.3,4.4,6.3
+sand,Sable,%,0-5cm,38.6,9.0,59.2
+sand,Sable,%,5-15cm,40.9,13.3,59.1
+sand,Sable,%,15-30cm,39.0,16.3,59.2
+silt,Limon,%,0-5cm,30.2,7.5,66.5
+silt,Limon,%,5-15cm,29.4,7.8,59.3
+silt,Limon,%,15-30cm,26.7,8.2,52.1
+soc,Carbone organique,g/kg,0-5cm,42.6,1.3,92.3
+soc,Carbone organique,g/kg,5-15cm,29.7,7.5,78.1
+soc,Carbone organique,g/kg,15-30cm,30.1,3.5,66.8

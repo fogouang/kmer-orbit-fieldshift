@@ -1,0 +1,53 @@
+{
+  "zone": "dschang",
+  "latitude": 5.4329,
+  "longitude": 10.0797,
+  "point_demande": [
+    5.4429,
+    10.0697
+  ],
+  "ecart_point_demande_km": 1.57,
+  "source": "ISRIC SoilGrids v2.0 (250 m), moyenne ponderee 0-30 cm",
+  "ph": 5.3,
+  "ph_niveau": "acide",
+  "ph_intervalle_90pct": [
+    4.37,
+    6.28
+  ],
+  "carbone_organique_g_kg": 32.0,
+  "carbone_niveau": "eleve",
+  "azote_g_kg": 3.4,
+  "argile_pct": 32.2,
+  "limon_pct": 28.2,
+  "sable_pct": 39.6,
+  "texture": "Limon argileux",
+  "cec_cmol_kg": 14.0,
+  "densite_apparente_kg_dm3": 1.1,
+  "aptitude_ph_cultures": [
+    {
+      "culture": "Maïs",
+      "aptitude_ph": "limite",
+      "detail": "un peu trop acide (optimum 5.5-7.5)"
+    },
+    {
+      "culture": "Haricot commun",
+      "aptitude_ph": "defavorable",
+      "detail": "trop acide (optimum 6.0-7.0) : chaulage ou autre culture"
+    },
+    {
+      "culture": "Arachide",
+      "aptitude_ph": "limite",
+      "detail": "un peu trop acide (optimum 5.5-7.0)"
+    },
+    {
+      "culture": "Manioc",
+      "aptitude_ph": "bon",
+      "detail": "pH dans l'optimum (4.5-7.5)"
+    },
+    {
+      "culture": "Pomme de terre",
+      "aptitude_ph": "bon",
+      "detail": "pH dans l'optimum (5.0-6.5)"
+    }
+  ]
+}

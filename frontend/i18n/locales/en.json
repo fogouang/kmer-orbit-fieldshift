@@ -1,0 +1,538 @@
+{
+  "meta": {
+    "titre": "Field Shift: crop rotations for a changing climate",
+    "description": "Compare crop rotations suited to the climate and soil of your plot, built on NASA Earth observation data."
+  },
+  "langue": {
+    "choisir": "Choose language",
+    "fr": "Français",
+    "en": "English"
+  },
+  "nav": {
+    "accueil": "Field Shift, home",
+    "equipe": "Kmer Orbit · NASA Space Apps 2026",
+    "essayer": "Try the tool"
+  },
+  "cultures": {
+    "mais": "Maize",
+    "haricot": "Beans",
+    "arachide": "Groundnut",
+    "manioc": "Cassava",
+    "pomme_de_terre": "Potato"
+  },
+  "hero": {
+    "aria": "Field Shift overview",
+    "carrousel": "carousel",
+    "slides": {
+      "climat": {
+        "surTitre": "NASA data · IRAD expertise",
+        "titre": "Crop rotations built for a climate that",
+        "surligne": "changes",
+        "texte": "Field Shift combines NASA satellite data with the expertise of IRAD Dschang to help farmers decide what to plant, and when.",
+        "chiffre": "−12%",
+        "legende": "less rainfall in Dschang over 10 years"
+      },
+      "semis": {
+        "surTitre": "Western Highlands of Cameroon",
+        "titre": "Rainfall is shifting, planting must shift",
+        "surligne": "too",
+        "texte": "The start of the rainy season varies by up to 55 days from one year to the next. The tool accounts for it, crop by crop.",
+        "chiffre": "55 days",
+        "legende": "spread in rainy-season onset"
+      },
+      "validation": {
+        "surTitre": "Validated in the field",
+        "titre": "Satellite data checked against the",
+        "surligne": "IRAD station",
+        "texte": "Ten years of ground measurements: GPM IMERG rainfall matches within 2%. NASA POWER, which overestimates it by 32%, is set aside.",
+        "chiffre": "0.79",
+        "legende": "satellite / station correlation"
+      }
+    },
+    "cta": "Compare my rotations",
+    "commentCaMarche": "How it works",
+    "agriculteurAlt": "Smiling farmer holding a basket of maize, beans, groundnuts, cassava and potatoes",
+    "carte": {
+      "parcelle": "IRAD plot · Dschang",
+      "titre": "Proposed 2-year rotation",
+      "sequence": "Crops season by season",
+      "alternance": "The alternation recommended by IRAD"
+    },
+    "sources": "Data: NASA GPM IMERG · NASA POWER · ISRIC SoilGrids · IRAD Dschang weather station",
+    "choisirSlide": "Choose a slide",
+    "slide": "Slide {numero}: {titre}",
+    "precedente": "Previous slide",
+    "suivante": "Next slide",
+    "pause": "Pause autoplay",
+    "reprendre": "Resume autoplay"
+  },
+  "mois": {
+    "1": "Jan",
+    "2": "Feb",
+    "3": "Mar",
+    "4": "Apr",
+    "5": "May",
+    "6": "Jun",
+    "7": "Jul",
+    "8": "Aug",
+    "9": "Sep",
+    "10": "Oct",
+    "11": "Nov",
+    "12": "Dec"
+  },
+  "moisLong": {
+    "1": "January",
+    "2": "February",
+    "3": "March",
+    "4": "April",
+    "5": "May",
+    "6": "June",
+    "7": "July",
+    "8": "August",
+    "9": "September",
+    "10": "October",
+    "11": "November",
+    "12": "December"
+  },
+  "probleme": {
+    "surTitre": "The problem",
+    "titre": "Yesterday’s farming calendars no longer work",
+    "intro": "In Dschang, rainfall is dropping, the rainy season starts earlier or later from one year to the next, and temperatures are rising. Yet farmers still plant on the same dates, with the same crop sequences.",
+    "chiffres": {
+      "pluie": {
+        "titre": "less rainfall in 10 years",
+        "texte": "2,181 mm per year on average in 2005-2014, versus 1,921 mm in 2015-2024.",
+        "source": "Source: NASA GPM IMERG"
+      },
+      "debut": {
+        "titre": "days of spread in rainy-season onset",
+        "texte": "Depending on the year, the rains started anywhere between 22 February and 18 April. Planting too early means risking the seedlings.",
+        "source": "Source: NASA GPM IMERG, daily data"
+      },
+      "chaleur": {
+        "titre": "warmer since 2012",
+        "texte": "Extra heat that weighs on crops that like cool conditions, such as potatoes and beans.",
+        "source": "Source: NASA POWER"
+      }
+    },
+    "frise": {
+      "titre": "Rainfall is dropping at the worst moments of the calendar",
+      "source": "Average rainfall 2015-2024 vs 2005-2014 (GPM IMERG)",
+      "saison1": "1st season (March to July)",
+      "saison2": "2nd season (August to November)",
+      "aria": "The 12 months of the year",
+      "baisse": "{pct}% less rain",
+      "roles": {
+        "semis1": "Early growth of 1st-season crops",
+        "semis2": "2nd-season planting",
+        "fin2": "End of the 2nd-season cycle"
+      }
+    },
+    "conclusion": "Less water at planting and at the end of the cycle, exactly when crops are most fragile. What to plant, and when, needs rethinking."
+  },
+  "commentCaMarche": {
+    "surTitre": "How it works",
+    "titre": "Three data sources, one safer decision",
+    "intro": "Field Shift does not decide for the farmer. It puts side by side what the sky, the soil and the farmer’s own priorities say, then proposes rotations to compare.",
+    "entrees": {
+      "climat": {
+        "titre": "Climate",
+        "texte": "Monthly rainfall over 20 years, the start of the rainy season year by year, and temperature.",
+        "badge": "Checked against the IRAD station"
+      },
+      "sol": {
+        "titre": "The plot’s soil",
+        "texte": "pH, clay and organic carbon in the top 30 centimetres. Farmers can also enter their own soil test.",
+        "badge": "Farmer’s soil test"
+      },
+      "priorites": {
+        "titre": "The farmer’s priorities",
+        "texte": "Yield, water security, soil health: each farmer sets what matters most, from 1 to 5.",
+        "badge": "Their choice, their sliders"
+      }
+    },
+    "moteur": {
+      "surTitre": "The engine",
+      "titre": "Every possible rotation, scored one by one",
+      "points": {
+        "0": "It evaluates every possible rotation over 2 years, that is 4 growing seasons.",
+        "1": "For each crop, it checks water over the whole cycle and at planting, temperature and pH.",
+        "2": "It applies IRAD’s rules: forbidden sequences, return intervals, seasons to avoid.",
+        "3": "It gives three scores out of 100: yield, water security and soil health."
+      }
+    },
+    "resultat": {
+      "surTitre": "The result",
+      "titre": "3 rotations to compare",
+      "texte": "The best options for the chosen priorities, each with its reasons and IRAD’s practical advice.",
+      "aria": "Example: the 3 rotations proposed for the IRAD Dschang plot",
+      "option": "Option {n}, score {note} out of 100"
+    },
+    "cta": "Try it on the IRAD plot"
+  },
+  "validation": {
+    "surTitre": "The proof",
+    "titre": "Satellite data, checked on the ground",
+    "intro": "Before trusting satellites, we tested them against ten years of records from IRAD’s weather station in Dschang. The result: GPM IMERG matches the ground truth, NASA POWER does not. So the tool uses IMERG for rainfall.",
+    "photoAlt": "Entrance sign of IRAD’s multipurpose agricultural research station in Dschang",
+    "photoLegende": "IRAD station in Dschang, where we obtained the rainfall records (2014-2024).",
+    "stats": {
+      "correlation": "month-by-month correlation",
+      "biais": "difference in total rainfall",
+      "erreur": "mean error per month"
+    },
+    "sources": {
+      "imerg": {
+        "nom": "NASA GPM IMERG",
+        "statut": "Selected",
+        "correlation": "0.79",
+        "biais": "−2%",
+        "erreur": "59 mm",
+        "verdict": "It follows the dry and wet months just like the station, and the rainfall total is almost exact."
+      },
+      "power": {
+        "nom": "NASA POWER",
+        "statut": "Not used for rainfall",
+        "correlation": "0.63",
+        "biais": "+32%",
+        "erreur": "106 mm",
+        "verdict": "It overestimates rainfall by a third. We only use it for temperature."
+      }
+    },
+    "graphique": {
+      "titre": "Annual rainfall: the station vs the satellites",
+      "moyennes": "Average: station 1,978 mm, IMERG 1,928 mm, POWER 2,600 mm",
+      "station": "IRAD station (ground measurement)",
+      "imerg": "GPM IMERG",
+      "power": "NASA POWER",
+      "unite": "mm per year",
+      "annee": "Year",
+      "aria": "Bar chart of annual rainfall from 2014 to 2024: IRAD station, GPM IMERG and NASA POWER. IMERG stays close to the station, POWER often far exceeds it.",
+      "note": "Comparison over 118 months. 2018 is missing from the station records; 2 inconsistent months were excluded."
+    },
+    "saisons": "Season by season, IMERG stays within 3% of the station: 988 mm vs 1,019 mm in the 1st season, 885 mm vs 910 mm in the 2nd season. And rainfall per season is precisely what the engine uses to score crops."
+  },
+  "irad": {
+    "surTitre": "Local knowledge",
+    "titre": "Built with the researchers of IRAD Dschang",
+    "intro": "Satellites tell us when it rains. IRAD’s researchers know what each crop can tolerate and what wears a soil out. We went to see them at the station, and their rules are built directly into the engine.",
+    "regle": {
+      "titre": "The golden rule of rotation",
+      "texte": "Alternate a crop that enriches the soil with nitrogen and a crop that consumes it.",
+      "aria": "Alternation recommended by IRAD",
+      "legumineuse": "Legume",
+      "cerealeTubercule": "Cereal or tuber"
+    },
+    "normes": {
+      "delai": {
+        "titre": "Return interval:",
+        "texte": "at least 3 years before growing the same crop again, 4 years for potatoes and cassava."
+      },
+      "jachere": {
+        "titre": "Fallow:",
+        "texte": "one season in three, with a cover crop such as Mucuna or Stylosanthes."
+      },
+      "association": {
+        "titre": "Intercropping:",
+        "texte": "maize + beans or maize + groundnut on the same plot is acceptable."
+      }
+    },
+    "jamais": {
+      "titre": "What the tool will never propose",
+      "texte": "These sequences are excluded before any score is computed.",
+      "maisMais": {
+        "titre": "Maize after maize",
+        "consequence": "Without fertiliser, empty cobs."
+      },
+      "haricotArachide": {
+        "titre": "Beans after groundnut",
+        "consequence": "Same family, same diseases."
+      },
+      "maniocManioc": {
+        "titre": "Cassava after cassava",
+        "consequence": "Dead soil and mealybugs."
+      },
+      "pdtPdt": {
+        "titre": "Potato after potato",
+        "consequence": "Soil-borne diseases take hold."
+      }
+    },
+    "fiche": {
+      "titre": "What the 5 crops need",
+      "source": "IRAD Dschang technical sheet, November 2026",
+      "culture": "Crop",
+      "colonnes": {
+        "eau": "Water need",
+        "ph": "Ideal pH",
+        "campagne": "When to plant"
+      },
+      "cultures": {
+        "haricot": {
+          "eau": "400 to 600 mm per cycle",
+          "ph": "5.5 to 6.5",
+          "campagne": "2nd season (the 1st is too wet: rot)"
+        },
+        "mais": {
+          "eau": "500 to 800 mm per cycle",
+          "ph": "5.5 to 6.5",
+          "campagne": "Both seasons (15 March or 15 August)"
+        },
+        "manioc": {
+          "eau": "1,000 to 1,500 mm per year",
+          "ph": "5.5 to 6.5 (tolerates 4.5)",
+          "campagne": "1st season (15 March), occupies the whole year"
+        },
+        "arachide": {
+          "eau": "400 to 600 mm per cycle",
+          "ph": "5.5 to 6.5",
+          "campagne": "Both seasons; too much water at the end rots the pods"
+        },
+        "pomme_de_terre": {
+          "eau": "500 to 700 mm per cycle",
+          "ph": "5.5 to 6.0",
+          "campagne": "1st season (in the 2nd, harvesting in the rain causes rot)"
+        }
+      }
+    },
+    "exemple": {
+      "surTitre": "A real example",
+      "titre": "The IRAD plot: a soil that is too acidic",
+      "texte": "On the station’s plot, the soil pH is 5.3, below the optimum for all five crops. The tool detects it, still proposes the best-suited rotation (maize, beans, potato, groundnut: 89 out of 100), and adds IRAD’s advice to correct the soil.",
+      "photoAlt": "Farm workers in rows of young maize plants",
+      "conseilTitre": "Advice shown by the tool",
+      "conseil": "Apply 5 to 10 tonnes per hectare of compost or manure, plus wood ash, to raise the pH towards 5.5 to 6.5. For groundnut, ash also supplies the calcium it needs.",
+      "cta": "See the full analysis"
+    }
+  },
+  "pourQui": {
+    "surTitre": "Who it is for",
+    "titre": "A tool for those who decide in the field, and those who advise them",
+    "publics": {
+      "agriculteurs": {
+        "titre": "Farmers",
+        "texte": "Compare what to plant on their plot, based on what matters to them: yield, water or soil."
+      },
+      "techniciens": {
+        "titre": "Extension officers",
+        "texte": "Back their advice with verified rainfall data and IRAD’s rules, plot by plot."
+      },
+      "cooperatives": {
+        "titre": "Cooperatives and NGOs",
+        "texte": "Plan seeds and growing seasons for their members while accounting for a changing climate."
+      },
+      "chercheurs": {
+        "titre": "Researchers",
+        "texte": "Test rotation scenarios and compare satellite data with field measurements."
+      }
+    }
+  },
+  "limites": {
+    "surTitre": "Let’s be honest",
+    "titre": "What the tool is not",
+    "points": {
+      "aide": {
+        "titre": "Decision support, not an order.",
+        "texte": "Farmers compare and choose. Proposals should be checked with an extension officer or IRAD."
+      },
+      "notes": {
+        "titre": "Scores, not tonnes.",
+        "texte": "Scores measure how well crops suit the climate and soil, not a yield in kilograms."
+      },
+      "sol": {
+        "titre": "An estimated soil.",
+        "texte": "SoilGrids gives an estimate on 250 m squares. A lab soil test is more reliable, and the tool lets farmers enter one."
+      },
+      "zone": {
+        "titre": "A pilot area.",
+        "texte": "Data is ready for Dschang and the rules come from IRAD Dschang. Other regions will need their own local rules."
+      }
+    },
+    "suite": {
+      "surTitre": "What’s next",
+      "titre": "Where we are heading",
+      "etapes": {
+        "zones": {
+          "titre": "More areas",
+          "texte": "Santchou and the Mbo plain, then other farming basins in Cameroon."
+        },
+        "smap": {
+          "titre": "Soil moisture",
+          "texte": "Add NASA SMAP satellite measurements to track the water actually available in the soil."
+        },
+        "prevision": {
+          "titre": "Forecasting the rains",
+          "texte": "A machine learning model to predict the start of the rainy season before planting."
+        },
+        "terrain": {
+          "titre": "Field validation",
+          "texte": "Test the proposed rotations on IRAD plots and compare harvests."
+        }
+      }
+    }
+  },
+  "final": {
+    "surTitre": "Try it",
+    "titre": "Which rotation for your plot?",
+    "texte": "Set your priorities, enter your soil test if you have one, and compare three rotations suited to today’s climate.",
+    "equipe": {
+      "surTitre": "The team",
+      "evenement": "NASA Space Apps Challenge 2026 · Yaoundé · “Field Shift” challenge",
+      "roleDev": "Software development and artificial intelligence",
+      "merci": "Thanks to the researchers of the IRAD Dschang station for their time, their data and their advice."
+    },
+    "footer": {
+      "avertissement": "Decision-support tool. Its proposals do not replace the advice of an extension officer.",
+      "donnees": "Data:"
+    }
+  },
+  "outil": {
+    "metaTitre": "Field Shift: compare rotations for my plot",
+    "surTitre": "The tool",
+    "titre": "Compare rotations for my plot",
+    "intro": "Set your priorities on the left: the tool evaluates every possible rotation over 2 years and proposes the three best suited to your plot’s climate and soil.",
+    "aucuneZone": "No area has data ready yet. Run the data preparation scripts.",
+    "annee1": "Year 1",
+    "annee2": "Year 2",
+    "saisons": {
+      "saison_1": "1st season (March to July)",
+      "saison_2": "2nd season (August to November)"
+    },
+    "saisonsCourt": {
+      "saison_1": "1st season",
+      "saison_2": "2nd season",
+      "seche": "Dry season",
+      "secheCourt": "Dry"
+    },
+    "importance": {
+      "1": "Minor",
+      "2": "Secondary",
+      "3": "Important",
+      "4": "Very important",
+      "5": "Essential"
+    },
+    "criteres": {
+      "rendement": {
+        "label": "Yield",
+        "aide": "Crops well suited to the climate and soil"
+      },
+      "eau": {
+        "label": "Water security",
+        "aide": "Low risk of running short of water, especially after planting"
+      },
+      "sol": {
+        "label": "Soil health",
+        "aide": "Nitrogen, ground cover, less erosion"
+      }
+    },
+    "panneau": {
+      "aria": "Your plot and your choices",
+      "parcelle": "Your plot",
+      "carte": "Map of the plot: {nom}",
+      "precedent": "Crop currently in the field",
+      "precedentAide": "The tool avoids planting it again too soon and picks what can follow it.",
+      "parcelleLibre": "Empty plot",
+      "priorites": "Your priorities",
+      "analyseSol": "I have a soil test",
+      "analyseSolAide": "Otherwise, the tool uses the SoilGrids estimate",
+      "estimation": "pH {ph}, clay {argile}%",
+      "ph": "pH (water)",
+      "argile": "Clay (%)",
+      "comparer": "Compare rotations"
+    },
+    "rotations": {
+      "titre": "Three rotations to compare",
+      "evaluees": "{n} rotations evaluated.",
+      "solUtilise": "Soil used: pH {ph}.",
+      "bande": "Crops season by season",
+      "solNu": "Dry season: bare soil",
+      "option": "Option {n}, score {note} out of 100",
+      "optionCourt": "Option {n}",
+      "meilleure": "Best fit",
+      "voir": "Show reasons ({n})",
+      "masquer": "Hide reasons",
+      "pointFort": "Strength:",
+      "vigilance": "Watch out:",
+      "aucune": "Nothing to watch out for.",
+      "conseils": "IRAD advice for this rotation ({n})",
+      "legende": "Scores measure how well crops suit the plot’s climate and soil, not a yield in tonnes. Hatched blocks show the dry season, when the soil is left bare."
+    },
+    "normes": {
+      "titre": "IRAD Dschang’s rules",
+      "intro": "Every proposed rotation follows these rules: no maize after maize, no beans after groundnut, at least 3 years before the same crop returns (4 years for potatoes and cassava).",
+      "libelles": {
+        "jachere": "Fallow",
+        "association": "Intercropping",
+        "amendement": "Soil amendment",
+        "travail_du_sol": "Tillage",
+        "varietes": "Varieties"
+      },
+      "erreurs": "Mistakes to avoid"
+    },
+    "climat": {
+      "titre": "Your plot’s climate",
+      "intro": "Averages for {debut} to {fin}, used by the tool to score the rotations.",
+      "saison": "of rain on average, between {min} and {max} mm depending on the year. Mean temperature {temp} °C.",
+      "debutTitre": "The start of the rains changes from year to year",
+      "debutTexte": "Onset date of the rainy season. NASA POWER is biased here: the tool relies on GPM IMERG.",
+      "moisTitre": "Rainfall month by month, two decades",
+      "moisTexte": "GPM IMERG averages, in mm per month."
+    },
+    "graphiques": {
+      "powerBiaise": "NASA POWER (biased)",
+      "debutAria": "Onset date of the rainy season, year by year",
+      "moisAria": "Average rainfall per month, two decades compared",
+      "ecart": "Change",
+      "mmMois": "mm per month"
+    },
+    "validation": {
+      "titre": "Satellite data checked on the ground",
+      "intro": "Rainfall measured at IRAD Dschang’s weather station ({periode}), compared month by month with satellite data. A correlation of 1 means both series rise and fall together.",
+      "imerg": "GPM IMERG (used by the tool)",
+      "power": "NASA POWER (not used for rainfall)",
+      "detail": "correlation, difference {biais}, over {mois} months",
+      "annuelle": "Average annual rainfall",
+      "annuelleDetail": "at the station, vs {imerg} mm for IMERG",
+      "ecartes": "{pluie} rainfall months and {temp} temperature months from the station were excluded (inconsistent or copied values)."
+    },
+    "sol": {
+      "titre": "Your plot’s soil",
+      "intro": "ISRIC SoilGrids estimate (250 m squares), over the top 30 centimetres. A lab soil test remains more reliable.",
+      "carbone": "Organic carbon",
+      "argile": "Clay",
+      "cec": "Exchange capacity",
+      "ph": {
+        "tresAcide": "very acidic",
+        "acide": "acidic",
+        "legerementAcide": "slightly acidic",
+        "neutre": "neutral",
+        "basique": "alkaline"
+      },
+      "niveaux": {
+        "faible": "low level",
+        "moyen": "medium level",
+        "eleve": "high level"
+      },
+      "textures": {
+        "sable": "Sand",
+        "sable_limoneux": "Loamy sand",
+        "limon_sableux": "Sandy loam",
+        "limon": "Loam",
+        "limon_fin": "Silt loam",
+        "limon_tres_fin": "Silt",
+        "limon_argilo_sableux": "Sandy clay loam",
+        "limon_argileux": "Clay loam",
+        "limon_argilo_fin": "Silty clay loam",
+        "argile_sableuse": "Sandy clay",
+        "argile_limoneuse": "Silty clay",
+        "argile": "Clay"
+      }
+    },
+    "niveauxNote": {
+      "excellent": "Excellent",
+      "tresBon": "Very good",
+      "bon": "Good",
+      "moyen": "Fair",
+      "faible": "Weak"
+    }
+  }
+}
