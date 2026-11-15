@@ -22,3 +22,8 @@ Thumbs.db
 
 # Secrets du backend (cle de l'assistant)
 backend/.env
+
+# Donnees brutes de la station IRAD : usage autorise, publication non
+data/raw/irad_*.csv
+data/processed/*_station_mensuel.csv
+data/processed/*_station_vs_satellite.csv
